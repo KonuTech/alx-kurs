@@ -159,10 +159,10 @@ def homework_01_03() -> None:
     menu()
 
 
-def homework_01_04() -> float:
+def homework_01_04() -> None:
     """
     Printing homework 01.04
-    :return: float
+    :return: None
     """
     list_1 = []
     list_2 = []
@@ -176,3 +176,33 @@ def homework_01_04() -> float:
     print(f"Summing all following numbers: {list_1} {list_2} ")
 
     print(f"A sum: {sum(list_1) + sum(list_2)}")
+
+
+def homework_01_05() -> None:
+    """
+    Printing homework 01.05
+    :return: None
+    """
+    roman_numbers = {
+        1: "I",
+        2: "II",
+        3: "III",
+        4: "IV",
+        5: "V",
+        6: "VI",
+        7: "VII",
+        8: "VIII",
+        9: "IX",
+        10: "X"
+    }
+
+    arabic_numeral = int(input("Provide a number between <1;10>\n"))
+
+    if 0 < arabic_numeral < 11:
+        print(
+            f"""
+                A roman number for {arabic_numeral} is: {roman_numbers.get(arabic_numeral)}
+            """
+        )
+    else:
+        print("Wrong input")

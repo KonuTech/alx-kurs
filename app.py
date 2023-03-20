@@ -24,3 +24,4 @@ if __name__ == '__main__':
     homework_01_02(imie, nazwisko, wiek, pensja, stanowisko)
     homework_01_03()
     homework_01_04()
+    homework_01_05()
