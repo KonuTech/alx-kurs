@@ -38,10 +38,10 @@ def homework_01_03() -> None:
         while True:
             printer_type = input(
                 """
-                What type of printer you use?
-                Valid values:
-                For black and white printer press: 0
-                For color printer press: 1\n
+                    What type of printer you use?
+                    Valid values:
+                    For black and white printer press: 0
+                    For color printer press: 1
                 """
             )
 
@@ -61,8 +61,8 @@ def homework_01_03() -> None:
         while True:
             available_time = input(
                 """
-                How much time in minutes do you have for printing?
-                Valid values: integers and dot delimited floats
+                    How much time in minutes do you have for printing?
+                    Valid values: integers and dot delimited floats
                 """
             )
 
@@ -76,8 +76,8 @@ def homework_01_03() -> None:
         while True:
             pages_number = input(
                 """
-                How much pages you want to print?
-                Valid values: integers
+                    How much pages you want to print?
+                    Valid values: integers
                 """
             )
 
@@ -94,19 +94,46 @@ def homework_01_03() -> None:
     }
 
     def menu():
-        data = []
+        data = {
+            "printer_type": 0,
+            "available_time": 0,
+            "number_of_pages": 0
+        }
         while (selection := input(menu_prompt)) != "4":
             try:
-                # MENU_OPTIONS[selection]()
-                if MENU_OPTIONS[selection]():
-                    data.append(MENU_OPTIONS[selection]())
+                if selection == "1":
+                    printer_type = MENU_OPTIONS[selection]()
+                    data.update({"printer_type": printer_type})
+                if selection == "2":
+                    available_time = MENU_OPTIONS[selection]()
+                    data.update({"available_time": available_time})
+                if selection == "3":
+                    number_of_pages = MENU_OPTIONS[selection]()
+                    data.update({"number_of_pages": number_of_pages})
             except KeyError:
                 print("Invalid input selected. Please try again.")
             print(
-
                 f"""
-                    Wybralem drukarke: {data}
+                    My current setup: {data}
                 """
             )
-        print(f"{data[0] * data[1] * data[2]}")
+        if data['printer_type'] == 1:
+            print(
+                f"""
+                    Printing a following total number of pages in color:
+                    {int(data['available_time'] / 5 * 2)}
+                """
+            )
+            data.update({"number_of_pages": data['available_time'] / 5 * 2})
+            print(data)
+        else:
+            print(
+                f"""
+                    Printing a following total number of pages in black and white:
+                    {int(data['available_time'] / 2 * 8)}
+                """
+            )
+            data.update({"number_of_pages": data['available_time'] / 2 * 8})
+            print(data)
+
     menu()
