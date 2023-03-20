@@ -18,7 +18,7 @@ wiek = "35"
 pensja = "4000"
 stanowisko = "mechanik"
 
-# Variables for homework 01.06
+# Variables for homework 01.07
 var_1 = 3
 var_2 = 1
 var_3 = 2
@@ -29,10 +29,11 @@ if __name__ == '__main__':
     # homework_01_02(imie, nazwisko, wiek, pensja, stanowisko)
     # homework_01_03()
     # homework_01_04()
-    # homework_01_05()
-    # homework_01_06(var_1, var_2, var_3)
-    # homework_01_07()
+    homework_01_05()
+    # homework_01_06()
+    # homework_01_07(var_1, var_2, var_3)
     # homework_01_08()
     # homework_01_09()
     # homework_01_10()
-    homework_01_11()
+    # homework_01_11()
+    # homework_01_12()

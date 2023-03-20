@@ -3,7 +3,7 @@ from random import randint
 
 def homework_01_01(zm1: str, zm2: str, zm3: str, zm4: str, zm5: str, zm6: str, zm7: str, zm8: str, zm9: str) -> None:
     """
-    Printing homework 01.01
+    Cwiczenie 51-2
     :param zm1:
     :param zm2:
     :param zm3:
@@ -20,7 +20,7 @@ def homework_01_01(zm1: str, zm2: str, zm3: str, zm4: str, zm5: str, zm6: str, z
 
 def homework_01_02(imie: str, nazwisko: str, wiek: int, pensja: float, stanowisko: str) -> None:
     """
-    Printing homework 01.02
+    Cwiczenie 15
     :param imie:
     :param nazwisko:
     :param wiek:
@@ -33,7 +33,7 @@ def homework_01_02(imie: str, nazwisko: str, wiek: int, pensja: float, stanowisk
 
 def homework_01_03() -> None:
     """
-    Printing homework 01.03
+    Cwiczenie 20
     :return: None
     """
 
@@ -164,7 +164,7 @@ def homework_01_03() -> None:
 
 def homework_01_04() -> None:
     """
-    Printing homework 01.04
+    Cwiczenie 31
     :return: None
     """
     list_1 = []
@@ -182,8 +182,12 @@ def homework_01_04() -> None:
 
 
 def homework_01_05() -> None:
+    pass
+
+
+def homework_01_06() -> None:
     """
-    Printing homework 01.05
+    Cwiczenie 35
     :return: None
     """
     roman_numbers = {
@@ -211,17 +215,17 @@ def homework_01_05() -> None:
         print("Wrong input")
 
 
-def homework_01_06(var_1, var_2, var_3) -> None:
+def homework_01_07(var_1, var_2, var_3) -> None:
     """
-    Printing homework 01.06
+    Cwiczenie 38
     :return: None
     """
     print(sorted([var_1, var_2, var_3]))
 
 
-def homework_01_07() -> None:
+def homework_01_08() -> None:
     """
-    Printing homework 01.07
+    Cwiczenie 43
     :return: None
     """
     menu_prompt = """
@@ -337,9 +341,9 @@ def homework_01_07() -> None:
     menu()
 
 
-def homework_01_08() -> None:
+def homework_01_09() -> None:
     """
-    Printing homework 01.08
+    Cwiczenie 44
     :return: None
     """
     number_1 = float(input(
@@ -411,9 +415,9 @@ def homework_01_08() -> None:
         )
 
 
-def homework_01_09() -> None:
+def homework_01_10() -> None:
     """
-    Printing homework 01.09
+    Cwiczenie 37_3
     :return: None
     """
     choice = float(input(
@@ -458,9 +462,9 @@ def homework_01_09() -> None:
         )
 
 
-def homework_01_10() -> None:
+def homework_01_11() -> None:
     """
-    Printing homework 01.10
+    Cwiczenie 37_4
     :return: None
     """
     choice = input(
@@ -511,9 +515,9 @@ def homework_01_10() -> None:
             """
         )
 
-def homework_01_11() -> None:
+def homework_01_12() -> None:
     """
-    Printing homework 01.11
+    Cwiczenie 36_4
     :return: None
     """
     operator = {
