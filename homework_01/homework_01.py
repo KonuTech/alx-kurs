@@ -1,3 +1,6 @@
+from random import randint
+
+
 def homework_01_01(zm1: str, zm2: str, zm3: str, zm4: str, zm5: str, zm6: str, zm7: str, zm8: str, zm9: str) -> None:
     """
     Printing homework 01.01
@@ -457,7 +460,7 @@ def homework_01_09() -> None:
 
 def homework_01_10() -> None:
     """
-    Printing homework 01.09
+    Printing homework 01.10
     :return: None
     """
     choice = input(
@@ -505,5 +508,103 @@ def homework_01_10() -> None:
         print(
             f"""
                 Error. Invalid choice.
+            """
+        )
+
+def homework_01_11() -> None:
+    """
+    Printing homework 01.11
+    :return: None
+    """
+    operator = {
+        1: "+",
+        2: "-",
+        3: "/",
+        4: "*",
+        "drawn_operator": ""
+    }
+
+    number_1 = randint(1, 9)
+    number_2 = randint(1, 9)
+    drawn_operator = operator.get(randint(1, 4))
+    operator.update({"drawn_operator": drawn_operator})
+
+    user_answer = input(
+        f"""
+            Drawn operant: {operator["drawn_operator"]}
+            Drawn numbers: {number_1} {number_2}
+            
+            How much is it:
+            {number_1} {operator["drawn_operator"]} {number_2}  
+        """
+    )
+
+    print(
+        f"""
+            User answer is:
+            {user_answer}
+        """
+    )
+
+    if operator["drawn_operator"] == "+":
+        print(number_1 + number_2)
+        if float(user_answer) == float(number_1) + float(number_2):
+            print(
+                f"""
+                    Correct asnwer.
+                """
+            )
+        else:
+            print(
+                f"""
+                    Wrong asnwer.
+                """
+            )
+    elif operator["drawn_operator"] == "-":
+        print(number_1 - number_2)
+        if float(user_answer) == float(number_1) - float(number_2):
+            print(
+                f"""
+                    Correct asnwer.
+                """
+            )
+        else:
+            print(
+                f"""
+                    Wrong asnwer.
+                """
+            )
+    elif operator["drawn_operator"] == "/":
+        print(number_1 / number_2)
+        if float(user_answer) == float(number_1) / float(number_2):
+            print(
+                f"""
+                    Correct asnwer.
+                """
+            )
+        else:
+            print(
+                f"""
+                    Wrong asnwer.
+                """
+            )
+    elif operator["drawn_operator"] == "*":
+        print(number_1 * number_2)
+        if float(user_answer) == float(number_1) * float(number_2):
+            print(
+                f"""
+                    Correct asnwer.
+                """
+            )
+        else:
+            print(
+                f"""
+                    Wrong asnwer.
+                """
+            )
+    else:
+        print(
+            f"""
+                Something went wrong.
             """
         )
