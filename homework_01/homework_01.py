@@ -1,6 +1,15 @@
 def homework_01_01(zm1: str, zm2: str, zm3: str, zm4: str, zm5: str, zm6: str, zm7: str, zm8: str, zm9: str) -> None:
     """
     Printing homework 01.01
+    :param zm1:
+    :param zm2:
+    :param zm3:
+    :param zm4:
+    :param zm5:
+    :param zm6:
+    :param zm7:
+    :param zm8:
+    :param zm9:
     :return: None
     """
     print(f"{zm6} {zm8} {zm7} {zm1} {zm3} {zm9} {zm5} {zm4} {zm2}")
@@ -9,6 +18,11 @@ def homework_01_01(zm1: str, zm2: str, zm3: str, zm4: str, zm5: str, zm6: str, z
 def homework_01_02(imie: str, nazwisko: str, wiek: int, pensja: float, stanowisko: str) -> None:
     """
     Printing homework 01.02
+    :param imie:
+    :param nazwisko:
+    :param wiek:
+    :param pensja:
+    :param stanowisko:
     :return: None
     """
     print(f"{imie} {nazwisko} {wiek} {pensja} {stanowisko}")
@@ -73,6 +87,9 @@ def homework_01_03() -> None:
                 print("Missing input. Try again.")
 
     def get_number_of_pages() -> int:
+        """
+        :return:
+        """
         while True:
             pages_number = input(
                 """
@@ -94,6 +111,9 @@ def homework_01_03() -> None:
     }
 
     def menu():
+        """
+        :return:
+        """
         data = {
             "printer_type": 0,
             "available_time": 0,
@@ -137,3 +157,22 @@ def homework_01_03() -> None:
             print(data)
 
     menu()
+
+
+def homework_01_04() -> float:
+    """
+    Printing homework 01.04
+    :return: float
+    """
+    list_1 = []
+    list_2 = []
+
+    while len(list_1) < 3:
+        list_1.append(float(input("Add a number to list_1\n")))
+
+    while len(list_2) < 3:
+        list_2.append(float(input("Add a number to list_2\n")))
+
+    print(f"Summing all following numbers: {list_1} {list_2} ")
+
+    print(f"A sum: {sum(list_1) + sum(list_2)}")

@@ -18,11 +18,9 @@ wiek = "35"
 pensja = "4000"
 stanowisko = "mechanik"
 
-# Variables for homework 01.02
-drukarka = ["czarno-biala", "kolorowa"]
-
 
 if __name__ == '__main__':
     homework_01_01(zm1, zm2, zm3, zm4, zm5, zm6, zm7, zm8, zm9)
     homework_01_02(imie, nazwisko, wiek, pensja, stanowisko)
     homework_01_03()
+    homework_01_04()
