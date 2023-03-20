@@ -104,7 +104,7 @@ def homework_01_03() -> None:
             else:
                 print("Wrong input. Try again.")
 
-    MENU_OPTIONS = {
+    menu_options = {
         "1": get_printer_type,
         "2": get_max_time,
         "3": get_number_of_pages
@@ -122,13 +122,13 @@ def homework_01_03() -> None:
         while (selection := input(menu_prompt)) != "4":
             try:
                 if selection == "1":
-                    printer_type = MENU_OPTIONS[selection]()
+                    printer_type = menu_options[selection]()
                     data.update({"printer_type": printer_type})
                 if selection == "2":
-                    available_time = MENU_OPTIONS[selection]()
+                    available_time = menu_options[selection]()
                     data.update({"available_time": available_time})
                 if selection == "3":
-                    number_of_pages = MENU_OPTIONS[selection]()
+                    number_of_pages = menu_options[selection]()
                     data.update({"number_of_pages": number_of_pages})
             except KeyError:
                 print("Invalid input selected. Please try again.")
@@ -206,3 +206,131 @@ def homework_01_05() -> None:
         )
     else:
         print("Wrong input")
+
+
+def homework_01_06(var_1, var_2, var_3) -> None:
+    """
+    Printing homework 01.06
+    :return: None
+    """
+    print(sorted([var_1, var_2, var_3]))
+
+
+def homework_01_07() -> None:
+    """
+    Printing homework 01.07
+    :return: None
+    """
+    menu_prompt = """
+            -- Menu --
+
+        1) Put your weight here
+        2) Put your height here
+        3) Calculate BMI
+
+        Enter your choice: 
+    """
+
+    def get_weight():
+        """
+        :return:
+        """
+        while True:
+            weight = input(
+                """
+                    What is your weight in kg?
+                    Valid inputs: dot delimited floats
+                """
+            )
+
+            if len(weight) == 0:
+                print("Missing input. Try again")
+            else:
+                print(f"Given weight is: {weight}")
+                return float(weight)
+
+
+    def get_height():
+        """
+        :return:
+        """
+        while True:
+            height = input(
+                """
+                    What is your height in meters?
+                    Valid inputs: dot delimited floats
+                """
+            )
+
+            if len(height) == 0:
+                print("Missing input. Try again")
+            else:
+                print(f"Given height is: {height}")
+                return float(height)
+
+
+    menu_options = {
+        "1": get_weight,
+        "2": get_height
+    }
+
+    def menu():
+        """
+        :return:
+        """
+        data = {
+            "weight": 0,
+            "height": 0,
+            "BMI": 0
+        }
+
+        while (selection := input(menu_prompt)) != "3":
+            try:
+                if selection == "1":
+                    weight = menu_options[selection]()
+                    data.update({"weight": weight})
+                if selection == "2":
+                    height = menu_options[selection]()
+                    data.update({"height": height})
+            except KeyError:
+                print("Invalid input selected. Please try again.")
+            print(
+                f"""
+                    My current numbers are: {data}
+                """
+            )
+
+        if data['weight'] > 0 and data['height'] > 0:
+            data.update({"BMI": data['weight'] / data['height'] ** 2})
+
+        if data['BMI'] < 18.5:
+            print(
+                f"""
+                    Your BMI is:
+                    {int(data['BMI'])}
+
+                    You are underweight
+                """
+            )
+
+        elif 18.5 <= data['BMI'] < 25:
+            print(
+                f"""
+                    Your BMI is:
+                    {int(data['BMI'])}
+
+                    You weight is fine
+                """
+            )
+
+        else:
+            print(
+                f"""
+                    Your BMI is:
+                    {int(data['BMI'])}
+
+                    You are overweighted
+                """
+            )
+
+    menu()
