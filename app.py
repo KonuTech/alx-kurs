@@ -33,4 +33,5 @@ if __name__ == '__main__':
     # homework_01_06(var_1, var_2, var_3)
     # homework_01_07()
     # homework_01_08()
-    homework_01_09()
+    # homework_01_09()
+    homework_01_10()

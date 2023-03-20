@@ -418,7 +418,7 @@ def homework_01_09() -> None:
             What do you want to compute: a field, or a circuit of a rectangle?
             For a circuit press: 0
             For a field press: 1
-            Valida numbers: integer
+            Valida numbers: floats
         """
     ))
 
@@ -451,5 +451,59 @@ def homework_01_09() -> None:
                 Calculating a circuit of a rectangle:
                 Calculation: 2 * ({number_1} + {number_2})
                 Result: {2 * (number_1 + number_2)}
+            """
+        )
+
+
+def homework_01_10() -> None:
+    """
+    Printing homework 01.09
+    :return: None
+    """
+    choice = input(
+        f"""
+            What do you want to compute: a field of a triangle, or a field of a rectangle?
+            For a triangle press: 0
+            For a rectangle press: 1
+            Valida numbers: floats
+        """
+    )
+
+    number_1 = input(
+        f"""
+            Enter first value:
+            Valida numbers: floats
+        """
+    )
+
+    number_2 = input(
+        f"""
+            Enter second value:
+            Valida numbers: floats
+        """
+    )
+
+    if len(choice) > 0 and int(choice) in (0, 1):
+        if choice == 0:
+            print(
+                f"""
+                    Calculating a field of a triangle:
+                    Calculation: 0.5 * {float(number_1)} * {float(number_2)}
+                    Result: {0.5 * float(number_1) * float(number_2)}
+                """
+            )
+
+        else:
+            print(
+                f"""
+                    Calculating a field of a rectangle:
+                    Calculation: {float(number_1)} * {float(number_2)}
+                    Result: {float(number_1) * float(number_2)}
+                """
+            )
+    else:
+        print(
+            f"""
+                Error. Invalid choice.
             """
         )
