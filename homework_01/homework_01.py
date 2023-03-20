@@ -334,8 +334,9 @@ def homework_01_07() -> None:
     menu()
 
 
-def homework_01_08() -> float:
+def homework_01_08() -> None:
     """
+    Printing homework 01.08
     :return: None
     """
     number_1 = float(input(
@@ -403,5 +404,52 @@ def homework_01_08() -> float:
         print(
             f"""
                 Error. Invalid operator.
+            """
+        )
+
+
+def homework_01_09() -> None:
+    """
+    Printing homework 01.09
+    :return: None
+    """
+    choice = float(input(
+        f"""
+            What do you want to compute: a field, or a circuit of a rectangle?
+            For a circuit press: 0
+            For a field press: 1
+            Valida numbers: integer
+        """
+    ))
+
+    number_1 = float(input(
+        f"""
+            What is the first side of the rectangle?
+            Valida numbers: floats
+        """
+    ))
+
+    number_2 = float(input(
+        f"""
+            What is the other side of the rectangle?
+            Valida numbers: floats
+        """
+    ))
+
+    if choice == 1:
+        print(
+            f"""
+                Calculating a field of a rectangle:
+                Calculation: {number_1} * {number_2}
+                Result: {number_1 * number_2}
+            """
+        )
+
+    elif choice == 0:
+        print(
+            f"""
+                Calculating a circuit of a rectangle:
+                Calculation: 2 * ({number_1} + {number_2})
+                Result: {2 * (number_1 + number_2)}
             """
         )
