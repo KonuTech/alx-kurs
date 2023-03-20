@@ -249,7 +249,6 @@ def homework_01_07() -> None:
                 print(f"Given weight is: {weight}")
                 return float(weight)
 
-
     def get_height():
         """
         :return:
@@ -267,7 +266,6 @@ def homework_01_07() -> None:
             else:
                 print(f"Given height is: {height}")
                 return float(height)
-
 
     menu_options = {
         "1": get_weight,
@@ -334,3 +332,76 @@ def homework_01_07() -> None:
             )
 
     menu()
+
+
+def homework_01_08() -> float:
+    """
+    :return: None
+    """
+    number_1 = float(input(
+        f"""
+            Enter first number.
+            Valida numbers: floats
+        """
+    ))
+
+    operator = input(
+        f"""
+            Enter mathematical opertor.
+            Valid opartators are: + - / *
+        """
+    )
+
+    number_2 = float(input(
+        f"""
+            Enter second number.
+            Valida numbers: floats
+        """
+    ))
+
+    if operator in ("+", "-", "/", "*"):
+        if operator == "+":
+            result = number_1 + number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+
+        elif operator == "-":
+            result = number_1 - number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+        elif operator == "/":
+            result = number_1 / number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+        elif operator == "*":
+            result = number_1 * number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+        else:
+            print(
+                f"""
+                    Something went wrong.
+                """
+            )
+    else:
+        print(
+            f"""
+                Error. Invalid operator.
+            """
+        )
