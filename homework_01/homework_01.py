@@ -15,7 +15,10 @@ def homework_01_01(zm1: str, zm2: str, zm3: str, zm4: str, zm5: str, zm6: str, z
     :param zm9:
     :return: None
     """
-    print(f"{zm6} {zm8} {zm7} {zm1} {zm3} {zm9} {zm5} {zm4} {zm2}")
+    print(f"""
+        Cwiczenie 51-2:
+            {zm6} {zm8} {zm7} {zm1} {zm3} {zm9} {zm5} {zm4} {zm2}
+        """)
 
 
 def homework_01_02(imie: str, nazwisko: str, wiek: int, pensja: float, stanowisko: str) -> None:
@@ -28,7 +31,10 @@ def homework_01_02(imie: str, nazwisko: str, wiek: int, pensja: float, stanowisk
     :param stanowisko:
     :return: None
     """
-    print(f"{imie} {nazwisko} {wiek} {pensja} {stanowisko}")
+    print(f"""
+        Cwiczenie 15:
+            Pan {imie} {nazwisko} (wiek: {wiek} lat) pracuje na stanowisku: {stanowisko} (pensja: {pensja} brutto).
+        """)
 
 
 def homework_01_03() -> None:
@@ -36,8 +42,8 @@ def homework_01_03() -> None:
     Cwiczenie 20
     :return: None
     """
-
     menu_prompt = """
+    Cwiczenie 20:
             -- Menu --
 
         1) Choose a printer type
@@ -167,6 +173,11 @@ def homework_01_04() -> None:
     Cwiczenie 31
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 31
+        """
+    )
     list_1 = []
     list_2 = []
 
@@ -182,7 +193,35 @@ def homework_01_04() -> None:
 
 
 def homework_01_05() -> None:
-    pass
+    """
+    Cwiczenie 31-1
+    :return:
+    """
+    print(
+        f"""
+            Cwiczenie 31-1
+        """
+    )
+    user_input = input(
+        f"""
+            Input n values separated by comma.
+        """
+    )
+    print(
+        f"""
+            User input:
+            {user_input}
+            
+            Inverted user input:
+            {user_input[::-1]}
+            
+            First value of input:
+            {user_input[0]}
+            
+            Last value of input:
+            {user_input[-1]}
+        """
+    )
 
 
 def homework_01_06() -> None:
@@ -190,6 +229,11 @@ def homework_01_06() -> None:
     Cwiczenie 35
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 35:
+        """
+    )
     roman_numbers = {
         1: "I",
         2: "II",
@@ -220,6 +264,11 @@ def homework_01_07(var_1, var_2, var_3) -> None:
     Cwiczenie 38
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 38:
+        """
+    )
     print(sorted([var_1, var_2, var_3]))
 
 
@@ -228,6 +277,11 @@ def homework_01_08() -> None:
     Cwiczenie 43
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 43:
+        """
+    )
     menu_prompt = """
             -- Menu --
 
@@ -346,6 +400,11 @@ def homework_01_09() -> None:
     Cwiczenie 44
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 44:
+        """
+    )
     number_1 = float(input(
         f"""
             Enter first number.
@@ -420,6 +479,11 @@ def homework_01_10() -> None:
     Cwiczenie 37_3
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 37-3:
+        """
+    )
     choice = float(input(
         f"""
             What do you want to compute: a field, or a circuit of a rectangle?
@@ -467,6 +531,11 @@ def homework_01_11() -> None:
     Cwiczenie 37_4
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 37-4:
+        """
+    )
     choice = input(
         f"""
             What do you want to compute: a field of a triangle, or a field of a rectangle?
@@ -515,11 +584,17 @@ def homework_01_11() -> None:
             """
         )
 
+
 def homework_01_12() -> None:
     """
     Cwiczenie 36_4
     :return: None
     """
+    print(
+        f"""
+            Cwiczenie 36-4:
+        """
+    )
     operator = {
         1: "+",
         2: "-",
