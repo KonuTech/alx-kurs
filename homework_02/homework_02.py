@@ -89,9 +89,12 @@ def homework_02_02() -> None:
         print(f"{' '.join(result)}\n")
 
 
-def homework_02_03() -> None:
+def homework_02_03(minimum: int, maximum: int, steps: int) -> None:
     """
     Cwiczenie 46-4
+    :param minimum: int
+    :param maximum: int
+    :param steps: int
     :return: None
     """
     print("Cwiczenie 46-4:\n")
@@ -99,7 +102,8 @@ def homework_02_03() -> None:
     doubles = []
     doubles_indexes = []
     doubles_count = 0
-    values = get_values()
+
+    values = get_values(minimum, maximum, steps)
 
     for i in range(len(values)):
         for k in range(i+1, len(values)):
@@ -124,3 +128,18 @@ def homework_02_03() -> None:
         Non-duplicate values    : {results}\n
         """
     )
+
+
+def homework_02_04(minimum: int, maximum: int, steps: int) -> None:
+    """
+    Cwiczenie 62-2
+    :param minimum: int
+    :param maximum: int
+    :param steps: int
+    :return: None
+    """
+    print("Cwiczenie 62-2:\n")
+
+    values = get_values(minimum, maximum, steps)
+
+    print(values)
