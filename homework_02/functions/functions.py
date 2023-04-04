@@ -5,6 +5,7 @@ def get_values(minimum: int, maximum: int, steps: int) -> list:
     """
     :param minimum: int
     :param maximum: int
+    :param steps: int
     :return: list
     """
 
