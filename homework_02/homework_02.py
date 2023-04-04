@@ -1,4 +1,4 @@
-import random
+from homework_02.functions.functions import *
 
 
 def homework_02_01() -> None:
@@ -96,37 +96,31 @@ def homework_02_03() -> None:
     """
     print("Cwiczenie 46-4:\n")
 
-    values = []
-    dubles = []
-    dubles_count = 0
-    dubles_indexes = []
-    result = []
-
-    for i in range(0, 10):
-        values.append(random.randint(1, 10))
-
-    values_shorter = values.copy()
-    print(values)
-    print(values_shorter)
+    doubles = []
+    doubles_indexes = []
+    doubles_count = 0
+    values = get_values()
 
     for i in range(len(values)):
-        # values_shorter.pop(i)
-        for k in range(i+1, len(values_shorter)):
-            # print("values[i]:", values[i], "values[k]:", values[k])
+        for k in range(i+1, len(values)):
             if values[i] == values[k]:
-                print("values[i]:", values[i], "values[k]:", values[k])
-                dubles.append(values[i])
-                dubles_indexes.append(i)
-                dubles_count += 1
-                # values_shorter.pop(i)
+                doubles.append(values[i])
+                doubles_indexes.append(i)
+                doubles_count += 1
 
-    for j in range(len(set(dubles_indexes))):
-        print("indexes[j]:", dubles_indexes[j])
-        # values.pop(indexes(j))
+    print(
+        f"""
+        Values                  : {values}
+        Doubles                 : {set(doubles)}
+        Doubles indexes         : {set(doubles_indexes)}
+        Doubles count           : {doubles_count}
+        """""
+    )
 
+    results = remove_item(values, doubles)
 
-    print("values:", values)
-    print("dubles:", set(dubles))
-    print("dubles_indexes:", set(dubles_indexes))
-    print("dubles_count:", dubles_count)
-    print(values_shorter)
+    print(
+        f"""
+        Non-duplicate values    : {results}\n
+        """
+    )
