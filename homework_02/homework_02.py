@@ -214,12 +214,24 @@ def homework_02_06(word: str) -> None:
         print(f"Liter {k} jest: {v}")
 
 
-def homework_02_07():
+def homework_02_07(values: list):
     """
     Cwiczenie 62-4
+    :param values:
     :return: None
     """
     print("Cwiczenie 62-4\n")
+
+    minimal_index = 1
+
+    for i in range(len(values)):
+        for j in range(i+1, len(values)):
+            if values[j] < values[minimal_index]:
+                minimal_index = j
+
+        values[i], values[minimal_index] = values[minimal_index], values[i]
+
+    print(values)
 
 
 def homework_02_08(kina: list, filmy: dict, cena_bilet: float) -> bool:
