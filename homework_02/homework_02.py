@@ -1,4 +1,4 @@
-def homework_02_01():
+def homework_02_01() -> None:
     """
     Cwiczenie 71_2b
     """
@@ -13,7 +13,7 @@ def homework_02_01():
             Enter your choice:\n
         """
 
-    def menu():
+    def menu() -> None:
         """
         :return:
         """
@@ -26,16 +26,21 @@ def homework_02_01():
             "sugar": 4.25
         }
 
-        def add_product():
+        def add_product() -> None:
             key = input("Add a name of a product to be added\n")
-            value = input("Specify the price for added product\n")
-            products.update({f"{key}": int(value)})
+            try:
+                value = float(input("Specify the price for added product\n"))
+                products.update({f"{key}": value})
+                print("Product added.")
+            except ValueError:
+                print("Expected float numbers as inputs for prices. Please try again.")
 
-        def view_products():
+        def view_products() -> None:
             tab = '\t'
             print("Current products\nin your basket are:")
             for k, v in products.items():
-                print(f"{3 * tab}{k}:{tab}{v}")
+                print(f"{3 * tab}{k}:{tab}{v}\n")
+            print("Products listed.")
 
         menu_options = {
             "1": add_product,
@@ -46,12 +51,8 @@ def homework_02_01():
             try:
                 if selection == "1":
                     menu_options[selection]()
-                    print("Product added.")
                 if selection == "2":
                     menu_options[selection]()
-                    print("Products listed.")
-                else:
-                    print("Please, use only: 1, 2 or 3 as inputs.")
             except KeyError:
                 print("Invalid input selected. Please try again.")
 
