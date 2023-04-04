@@ -180,17 +180,34 @@ def homework_02_05(minimum: int, maximum: int, steps: int) -> None:
                 values = get_values(minimum, maximum, steps)
                 result = int(input(
                     f"""
-                    How much is it: {values[0]} * {values[1]} ?
+                    How much is it: {values[0]} * {values[1]} ?\n
                     """
                 ))
                 if result == values[0] * values[1]:
                     count += 1
-                    print("Correct anwer.")
+                    print("Correct anwer.\n")
                 else:
-                    print("Wrong answer.")
+                    print("Wrong answer.\n")
             except ValueError:
-                print("Provide an integer. Please try again.")
-            except UnboundLocalError:
-                print("Provide a result expressed as single integer.")
+                print("Provide an integer. Please try again.\n")
         else:
             return False
+
+
+def homework_02_06(word: str) -> None:
+    """
+    Cwiczenie 26-10
+    :return: None
+    """
+    print("Cwiczenie 26-10:\n")
+
+    dictionary = {}
+
+    for c in word:
+        if c not in dictionary.keys():
+            dictionary.update({c: 1})
+        else:
+            dictionary[c] = dictionary[c] + 1
+
+    for k, v in dictionary.items():
+        print(f"Liter {k} jest: {v}")
