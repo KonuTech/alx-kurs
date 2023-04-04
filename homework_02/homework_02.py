@@ -160,7 +160,7 @@ def homework_02_04(minimum: int, maximum: int, steps: int) -> None:
                     print(f"Provide an integer. Try again.\n")
                     break
             else:
-                return None
+                return False
 
 
 def homework_02_05(minimum: int, maximum: int, steps: int) -> None:
@@ -172,6 +172,25 @@ def homework_02_05(minimum: int, maximum: int, steps: int) -> None:
     :return: None
     """
     print("Cwiczenie 59_2:\n")
+    count = 1
 
-    values = get_values(minimum, maximum, steps)
-    print(values)
+    while True:
+        if count < 6:
+            try:
+                values = get_values(minimum, maximum, steps)
+                result = int(input(
+                    f"""
+                    How much is it: {values[0]} * {values[1]} ?
+                    """
+                ))
+                if result == values[0] * values[1]:
+                    count += 1
+                    print("Correct anwer.")
+                else:
+                    print("Wrong answer.")
+            except ValueError:
+                print("Provide an integer. Please try again.")
+            except UnboundLocalError:
+                print("Provide a result expressed as single integer.")
+        else:
+            return False
