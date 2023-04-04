@@ -130,7 +130,7 @@ def homework_02_03(minimum: int, maximum: int, steps: int) -> None:
     )
 
 
-def homework_02_04(minimum: int, maximum: int, steps: int) -> None:
+def homework_02_04(minimum: int, maximum: int, steps: int) -> bool:
     """
     Cwiczenie 62-2
     :param minimum: int
@@ -163,7 +163,7 @@ def homework_02_04(minimum: int, maximum: int, steps: int) -> None:
                 return False
 
 
-def homework_02_05(minimum: int, maximum: int, steps: int) -> None:
+def homework_02_05(minimum: int, maximum: int, steps: int) -> bool:
     """
     Cwiczenie 59_2
     :param minimum: int
@@ -214,7 +214,15 @@ def homework_02_06(word: str) -> None:
         print(f"Liter {k} jest: {v}")
 
 
-def homework_02_08(kina: list, filmy: dict, cena_bilet: float) -> None:
+def homework_02_07():
+    """
+    Cwiczenie 62-4
+    :return: None
+    """
+    print("Cwiczenie 62-4\n")
+
+
+def homework_02_08(kina: list, filmy: dict, cena_bilet: float) -> bool:
     """
     Cwiczenie 26-10
     :param kina: list
@@ -222,6 +230,7 @@ def homework_02_08(kina: list, filmy: dict, cena_bilet: float) -> None:
     :param cena_bilet: float
     :return: None
     """
+    print("Cwiczenie 26-10\n")
 
     litery = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x",
               "c", "v", "b", "n", "m"]
@@ -302,5 +311,90 @@ def homework_02_08(kina: list, filmy: dict, cena_bilet: float) -> None:
                 RAZEM DO ZAPLATY: {liczba_osob} * {cena_bilet} PLN = {liczba_osob * cena_bilet} PLN
             """
         )
+
+        return False
+
+
+def homework_02_09() -> bool:
+    """
+    Cwiczenie 67-4
+    :return: None
+    """
+    print("Cwiczenie 67-4\n")
+
+    while True:
+
+        while True:
+            try:
+                number_1 = float(input(
+                    f"""
+                        Enter first number.
+                        Valid numbers: floats
+                    """
+                ))
+                break
+            except ValueError:
+                print("Enter floats or integers. Please try again")
+
+        while True:
+            try:
+                operator = input(
+                    f"""
+                        Enter mathematical opertor.
+                        Valid operators are: + - / *
+                    """
+                )
+                assert operator in ("+", "-", "/", "*")
+                break
+            except AssertionError:
+                print("Wrong operator. Please try again.")
+
+        while True:
+            try:
+                number_2 = float(input(
+                    f"""
+                        Enter second number.
+                        Valid numbers: floats
+                    """
+                ))
+                break
+            except ValueError:
+                print("Enter floats or integers. Please try again")
+
+        if operator == "+":
+            result = number_1 + number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+
+        if operator == "-":
+            result = number_1 - number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+
+        if operator == "/":
+            result = number_1 / number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
+
+        if operator == "*":
+            result = number_1 * number_2
+            print(
+                f"""
+                    Calculation: {number_1} {operator} {number_2}
+                    Result: {result}
+                """
+            )
 
         return False
