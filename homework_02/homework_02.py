@@ -141,5 +141,20 @@ def homework_02_04(minimum: int, maximum: int, steps: int) -> None:
     print("Cwiczenie 62-2:\n")
 
     values = get_values(minimum, maximum, steps)
-
     print(values)
+
+    while True:
+        value = input("Provide an integer between 1 and 25.\n")
+        print(f"Provided integer:\n{value}")
+
+        while True:
+            try:
+                assert int(value) in set(values)
+                print(f"Integer {value} found.\n")
+                break
+            except AssertionError:
+                print(f"Integer {value} NOT found. Please try again.\n")
+                break
+            except ValueError:
+                print(f"Provide an integer. Try again.\n")
+                break
