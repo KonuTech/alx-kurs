@@ -1,65 +1,85 @@
+from typing import List
+
 from homework_03.training_school.models.course import Course
 from homework_03.training_school.models.student import Student
+
+tab = "\t"
+new_line = "\t"
 
 
 def training_school() -> None:
     courses = []
 
-    def add_course():
+    def create_course() -> None:
+        """
+        Prompts the user to create a new Course object and adds it to the given list.
+        :param courses:
+        :return: None
+        """
 
-        courses.append(
-            Course(
-                title=input("\tInput the Name of the Course:\n"),
-                form=input("\tInput the Form of the Course:\n")
-            )
-        )
+        title = input(f"{tab}Input the Name of the Course:{new_line}")
+        if not title:
+            print(f"{tab}Error: Course Title cannot be empty.{new_line}")
+            return
 
-    def list_courses():
+        form = input(f"{tab}Input the Form of the Course:{new_line}")
+        if not form:
+            print(f"{tab}Error: Course Form cannot be empty.{new_line}")
+            return
 
-        try:
-            assert len(courses) > 0
-        except AssertionError:
-            print("\tEmpty list of Courses. Please register a Course first.\n")
+        training = Course(title=title.capitalize(), form=form.capitalize())
+
+        for c, course in enumerate(courses):
+            if course.title == training.title:
+                print(f"{tab}Error: Course Title already in a list of Courses.{new_line}")
+                return
+
+        courses.append(training)
+        print(f"{tab}Course {training.title}-{training.form} added to the Courses list.{new_line}")
+
+    def list_courses() -> None:
+        """
+        Prompts the user to list all registered Courses.
+        :param courses:
+        :return: None
+        """
+        if len(courses) == 0:
+            print(f"{tab}Empty list of Courses. Please register a Course first.{new_line}")
+            return
 
         for c, course in enumerate(courses):
             print(
                 f"""
                 List of registered Courses:
                 ID: {c+1}
-                TITLE: {course.title.capitalize()}
-                FORM: {course.form.capitalize()}
+                TITLE: {course.title}
+                FORM: {course.form}
                 """
             )
 
-    def remove_course():
+    def remove_course() -> None:
 
-        while True:
-            try:
-                assert len(courses) > 0
-                course_name = input("\tInput the Name of the Course to be removed:\n")
+        if len(courses) == 0:
+            print("\tEmpty list of Courses. Please register a Course first.\n")
+            return
 
-                try:
-                    assert len(course_name) > 0
-                    for c, course in enumerate(courses):
-                        if course.title.capitalize() == course_name.capitalize():
-                            courses.pop(c)
+        course_name = input("\tInput the Name of the Course to be removed:\n")
+        if not course_name:
+            print("\tMissing Course title. Please pass a Course title.\n")
+            return
 
-                        print(
-                            f"""
-                            Course {course.title.capitalize()} removed:
-                            ID: {c + 1}
-                            TITLE: {course.title.capitalize()}
-                            FORM: {course.form.capitalize()}
-                            """
-                        )
+        for c, course in enumerate(courses):
+            if course.title.capitalize() == course_name.capitalize():
+                courses.pop(c)
 
-                except AssertionError:
-                    print("\tMissing Course title. Please pass a Course title.\n")
-                    break
-
-            except AssertionError:
-                print("\tEmpty list of Courses. Please register a Course first.\n")
-                break
+                print(
+                    f"""
+                    Course {course.title.capitalize()} removed:
+                    ID: {c + 1}
+                    TITLE: {course.title.capitalize()}
+                    FORM: {course.form.capitalize()}
+                    """
+                )
 
     def add_student():
         pass
@@ -85,7 +105,7 @@ def training_school() -> None:
         """
 
     menu_options = {
-        "1": add_course,
+        "1": create_course,
         "2": list_courses,
         "3": remove_course,
         "4": add_student,
