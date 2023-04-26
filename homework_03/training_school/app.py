@@ -10,7 +10,7 @@ new_line = "\t"
 def training_school() -> None:
     courses = []
 
-    def create_course() -> None:
+    def create_course(courses: List[Course]) -> None:
         """
         Prompts the user to create a new Course object and adds it to the given list.
         :param courses:
@@ -37,7 +37,7 @@ def training_school() -> None:
         courses.append(training)
         print(f"{tab}Course {training.title}-{training.form} added to the Courses list.{new_line}")
 
-    def list_courses() -> None:
+    def list_courses(courses: List[Course]) -> None:
         """
         Prompts the user to list all registered Courses.
         :param courses:
@@ -57,7 +57,7 @@ def training_school() -> None:
                 """
             )
 
-    def remove_course() -> None:
+    def remove_course(courses: List[Course]) -> None:
 
         if len(courses) == 0:
             print("\tEmpty list of Courses. Please register a Course first.\n")
@@ -69,15 +69,19 @@ def training_school() -> None:
             return
 
         for c, course in enumerate(courses):
-            if course.title.capitalize() == course_name.capitalize():
+            print(c, course.title)
+            if course.title != course_name.capitalize():
+                print(f"{tab}Error: Course Title not in a list of registered Courses.{new_line}")
+                return
+            else:
                 courses.pop(c)
-
+                print(f"{tab}Course {course.title} removed from the list of registered Courses.{new_line}")
                 print(
                     f"""
-                    Course {course.title.capitalize()} removed:
-                    ID: {c + 1}
-                    TITLE: {course.title.capitalize()}
-                    FORM: {course.form.capitalize()}
+                    Course {course.title} removed:
+                        ID: {c + 1}
+                        TITLE: {course.title}
+                        FORM: {course.form}
                     """
                 )
 
@@ -121,11 +125,11 @@ def training_school() -> None:
         while (selection := input(menu_prompt)) != "7":
             try:
                 if selection == "1":
-                    menu_options[selection]()
+                    menu_options[selection](courses)
                 if selection == "2":
-                    menu_options[selection]()
+                    menu_options[selection](courses)
                 if selection == "3":
-                    menu_options[selection]()
+                    menu_options[selection](courses)
                 if selection == "4":
                     menu_options[selection]()
                 if selection == "5":
