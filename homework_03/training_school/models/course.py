@@ -1,12 +1,19 @@
+from typing import List
+
 class Course:
     """
-    A Class defining attributes of a Course
+    A Class defining attributes of a Course entity
     """
-    def __init__(self, title: str, form: str) -> None:
+    def __init__(self, title: str, city: str, date: str, students: List = [], teachers: List = []) -> None:
         """
         :param title:
-        :param form:
+        :param city:
+        :param date:
+        :param students: (optional) list of students enrolled in the course, default value is an empty list
+        :param teachers: (optional) list of teachers for the course, default value is an empty list
         """
         self.title = title
-        self.form = form
-        self.students = []
+        self.city = city
+        self.date = date
+        self.students = students
+        self.teachers = teachers
