@@ -9,6 +9,7 @@ new_line = "\n"
 
 def training_school() -> None:
     courses = []
+    # students = []
 
     def create_course(courses: List[Course]) -> None:
         """
@@ -40,7 +41,11 @@ def training_school() -> None:
                 return
 
         courses.append(training)
-        print(f"{tab}Course {training.title}-{training.city}-{training.date} added to the Courses list.{new_line}")
+        print(
+            f"""
+            {tab}Course {training.title}-{training.city}-{training.date} added to the Courses list.{new_line}
+            """
+        )
 
     def list_courses(courses: List[Course]) -> None:
         """
@@ -56,7 +61,7 @@ def training_school() -> None:
             print(
                 f"""
                 List of registered Courses:
-                ID: {c+1}
+                ID: {c + 1}
                 TITLE: {course.title}
                 CITY: {course.city}
                 DATE: {course.date}
@@ -101,8 +106,62 @@ def training_school() -> None:
                     """
                 )
 
-    def add_student():
-        pass
+    def add_student(courses: List[Course]):
+        if len(courses) == 0:
+            print("\tEmpty list of Courses. Please register a Course first.\n")
+            return
+
+        course_name = input("\tInput the Name of the Course to which student is going to be assigned:\n")
+        if not course_name:
+            print("\tMissing Course title. Please pass a Course title.\n")
+            return
+
+        name = input(f"{tab}Input a Name of a Student:{new_line}")
+        if not name:
+            print(f"{tab}Error: Student's Name cannot be empty.{new_line}")
+            return
+
+        surname = input(f"{tab}Input a Surname of a Student:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
+            return
+
+        phone = input(f"{tab}Input a Phone number of a Student:{new_line}")
+        if not phone:
+            print(f"{tab}Error: Student's Phone Number cannot be empty.{new_line}")
+            return
+
+        email = input(f"{tab}Input an Email address of a Student:{new_line}")
+        if not email:
+            print(f"{tab}Error: Student's Email address cannot be empty.{new_line}")
+            return
+
+        pupil = Student(
+            name=name.capitalize(),
+            surname=surname.capitalize(),
+            phone=phone,
+            email=email,
+        )
+
+        for c, course in enumerate(courses):
+            print(c, course.title)
+            if course.title != course_name.capitalize():
+                print(f"{tab}Error: Course Title not in a list of registered Courses.{new_line}")
+                return
+
+            if course.title == course_name.capitalize():
+                course.students.append(pupil)
+
+                print(
+                    f"""
+                        {tab}Student:
+                        {pupil.name}
+                        {pupil.surname}
+                        {pupil.phone}
+                        {pupil.email}
+                        added to the list of Students.{new_line}
+                    """
+                )
 
     def remove_student():
         pass
@@ -118,7 +177,7 @@ def training_school() -> None:
 
     menu_prompt = """
         Cwiczenie R2:
-        
+
         1 - Add a Course
         2 - List Courses
         3 - Remove a Course
@@ -128,7 +187,7 @@ def training_school() -> None:
         7 - Add a Teacher to the Course
         8 - Reassign a Student to different Course
         9 - Exit
-        
+
         Enter your choice:\n
         """
 
@@ -156,7 +215,7 @@ def training_school() -> None:
             elif selection == "3":
                 menu_options[selection](courses)
             elif selection == "4":
-                menu_options[selection]()
+                menu_options[selection](courses)
             elif selection == "5":
                 menu_options[selection]()
             elif selection == "6":

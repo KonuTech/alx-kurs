@@ -1,10 +1,8 @@
-from typing import List
-
 class Course:
     """
     A Class defining attributes of a Course entity
     """
-    def __init__(self, title: str, city: str, date: str, students: List = [], teachers: List = []) -> None:
+    def __init__(self, title: str, city: str, date: str) -> None:
         """
         :param title:
         :param city:
@@ -15,5 +13,5 @@ class Course:
         self.title = title
         self.city = city
         self.date = date
-        self.students = students
-        self.teachers = teachers
+        self.students = []
+        self.teachers = []
