@@ -2,6 +2,7 @@ from typing import List
 
 from homework_03.training_school.models.course import Course
 from homework_03.training_school.models.student import Student
+from homework_03.training_school.models.teacher import Teacher
 
 tab = "\t"
 new_line = "\n"
@@ -210,7 +211,49 @@ def training_school() -> None:
                 )
 
     def add_teacher():
-        pass
+        if len(courses) == 0:
+            print("\tEmpty list of Courses. Please register a Course first.\n")
+            return
+
+        course_name = input("\tInput the Name of the Course to which Teacher is going to be assigned:\n")
+        if not course_name:
+            print("\tMissing Course title. Please pass a Course title.\n")
+            return
+
+        name = input(f"{tab}Input a Name of a Teacher:{new_line}")
+        if not name:
+            print(f"{tab}Error: Teacher's Name cannot be empty.{new_line}")
+            return
+
+        surname = input(f"{tab}Input a Surname of a Teacher:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Teacher's Surname cannot be empty.{new_line}")
+            return
+
+        specialization = input(f"{tab}Input a Specialization of a Teacher:{new_line}")
+        if not specialization:
+            print(f"{tab}Error: Teacher's Specialization cannot be empty.{new_line}")
+            return
+
+        tutor = Teacher(
+            name=name.capitalize(),
+            surname=surname.capitalize(),
+            specialization=specialization.capitalize()
+        )
+
+        for c, course in enumerate(courses):
+            if course.title == course_name.capitalize():
+                course.teachers.append(tutor)
+
+                print(
+                    f"""
+                        {tab}Teacher:
+                        {tutor.name}
+                        {tutor.surname}
+                        {tutor.specialization}
+                        added to the list of Teachers.{new_line}
+                    """
+                )
 
     def reassign_student():
         pass
