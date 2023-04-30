@@ -210,7 +210,7 @@ def training_school() -> None:
                     """
                 )
 
-    def add_teacher():
+    def add_teacher(courses: List[Course]):
         if len(courses) == 0:
             print("\tEmpty list of Courses. Please register a Course first.\n")
             return
@@ -255,8 +255,45 @@ def training_school() -> None:
                     """
                 )
 
-    def reassign_student():
-        pass
+    def reassign_student(courses: List[Course]):
+        if len(courses) == 0:
+            print("\tEmpty list of Courses. Please register a Course first.\n")
+            return
+
+        course_name_from = input("\tInput the Name of the Course from which Student is going to be reassigned:\n")
+        if not course_name_from:
+            print("\tMissing Course title. Please pass a Course title.\n")
+            return
+
+        surname = input(f"{tab}Input a Surname of a Student to reassign:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
+            return
+
+        course_name_to = input("\tInput the Name of the Course to which Student is going to be reassigned:\n")
+        if not course_name_to:
+            print("\tMissing Course title. Please pass a Course title.\n")
+            return
+
+        for c, course in enumerate(courses):
+            if course.title == course_name_from.capitalize():
+                for s, student in enumerate(course.students):
+                    if student.surname == surname.capitalize():
+                        for t, training in enumerate(courses):
+                            if training.title == course_name_to.capitalize():
+                                training.students.append(student)
+                                course.students.remove(student)
+                                print(
+                                    f"""
+                                         {tab}Student:
+                                         {student.name}
+                                         {student.surname}
+                                         {student.phone}
+                                         {student.email}
+                                         reassigned from the list of Students of {course_name_from}{new_line}
+                                         and joined Students of {course_name_to}
+                                     """
+                                )
 
     menu_prompt = """
         Cwiczenie R2:
@@ -304,9 +341,9 @@ def training_school() -> None:
             elif selection == "6":
                 menu_options[selection](courses)
             elif selection == "7":
-                menu_options[selection]()
+                menu_options[selection](courses)
             elif selection == "8":
-                menu_options[selection]()
+                menu_options[selection](courses)
             else:
                 print("Invalid input selected. Please try again.")
 
