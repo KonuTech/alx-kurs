@@ -87,11 +87,7 @@ def training_school() -> None:
             return
 
         for c, course in enumerate(courses):
-            print(c, course.title)
-            if course.title != course_name.capitalize():
-                print(f"{tab}Error: Course Title not in a list of registered Courses.{new_line}")
-                return
-            else:
+            if course.title == course_name.capitalize():
                 courses.pop(c)
                 print(f"{tab}Course {course.title} removed from the list of registered Courses.{new_line}")
                 print(
@@ -144,11 +140,6 @@ def training_school() -> None:
         )
 
         for c, course in enumerate(courses):
-            print(c, course.title)
-            if course.title != course_name.capitalize():
-                print(f"{tab}Error: Course Title not in a list of registered Courses.{new_line}")
-                return
-
             if course.title == course_name.capitalize():
                 course.students.append(pupil)
 
@@ -179,10 +170,6 @@ def training_school() -> None:
             return
 
         for c, course in enumerate(courses):
-            print(c, course.title)
-            if course.title != course_name.capitalize():
-                print(f"{tab}Error: Course Title not in a list of registered Courses.{new_line}")
-                return
             if course.title == course_name.capitalize():
                 for s, student in enumerate(course.students):
                     if student.surname == surname.capitalize():
@@ -199,8 +186,28 @@ def training_school() -> None:
                             """
                         )
 
-    def list_students():
-        pass
+    def list_students(courses: List[Course]):
+        for c, course in enumerate(courses):
+            print(
+                f"""
+                Course {course.title} removed:
+                    ID: {c + 1}
+                    TITLE: {course.title}
+                    CITY: {course.city}
+                    DATE: {course.date}
+                """
+            )
+            for s, student in enumerate(course.students):
+                print(
+                    f"""
+                        {tab}Student:
+                        {student.name}
+                        {student.surname}
+                        {student.phone}
+                        {student.email}
+                        {new_line}
+                    """
+                )
 
     def add_teacher():
         pass
@@ -252,7 +259,7 @@ def training_school() -> None:
             elif selection == "5":
                 menu_options[selection](courses)
             elif selection == "6":
-                menu_options[selection]()
+                menu_options[selection](courses)
             elif selection == "7":
                 menu_options[selection]()
             elif selection == "8":
