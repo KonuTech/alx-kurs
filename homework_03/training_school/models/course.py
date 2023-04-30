@@ -7,8 +7,8 @@ class Course:
         :param title:
         :param city:
         :param date:
-        :param students: (optional) list of students enrolled in the course, default value is an empty list
-        :param teachers: (optional) list of teachers for the course, default value is an empty list
+        :param students: (optional) list of Students enrolled in the Course, default value is an empty list
+        :param teachers: (optional) list of Teachers for the Course, default value is an empty list
         """
         self.title = title
         self.city = city

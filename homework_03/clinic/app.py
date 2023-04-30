@@ -1,17 +1,16 @@
 from typing import List
 
-from homework_03.training_school.models.course import Course
-from homework_03.training_school.models.student import Student
-from homework_03.training_school.models.teacher import Teacher
+from homework_03.clinic.models.clinic import Clinic
+
 
 tab = "\t"
 new_line = "\n"
 
 
-def training_school() -> None:
-    courses = []
+def clinic() -> None:
+    clinics = []
 
-    def create_course(courses: List[Course]) -> None:
+    def add_clinic(clinics: List[Clinic]) -> None:
         """
         Prompts the user to create a new Course object and adds it to the given list.
         :param courses:
@@ -47,7 +46,7 @@ def training_school() -> None:
             """
         )
 
-    def list_courses(courses: List[Course]) -> None:
+    def remove_clinic(clinics: List[Clinic]) -> None:
         """
         Prompts the user to list all registered Courses.
         :param courses:
@@ -70,7 +69,7 @@ def training_school() -> None:
                 """
             )
 
-    def remove_course(courses: List[Course]) -> None:
+    def add_patient(clinics: List[Clinic]) -> None:
         """
         Prompts the user for a Title of a Course to be removed from a list of Courses.
         :param courses:
@@ -102,7 +101,7 @@ def training_school() -> None:
                     """
                 )
 
-    def add_student(courses: List[Course]):
+    def remove_patient(clinics: List[Clinic]):
         if len(courses) == 0:
             print("\tEmpty list of Courses. Please register a Course first.\n")
             return
@@ -154,7 +153,7 @@ def training_school() -> None:
                     """
                 )
 
-    def remove_student(courses: List[Course]):
+    def list_clinics(clinics: List[Clinic]):
         if len(courses) == 0:
             print("\tEmpty list of Courses. Please register a Course first.\n")
             return
@@ -186,7 +185,7 @@ def training_school() -> None:
                             """
                         )
 
-    def list_students(courses: List[Course]):
+    def list_patients(clinics: List[Clinic]):
         for c, course in enumerate(courses):
             print(
                 f"""
@@ -209,116 +208,27 @@ def training_school() -> None:
                     """
                 )
 
-    def add_teacher(courses: List[Course]):
-        if len(courses) == 0:
-            print("\tEmpty list of Courses. Please register a Course first.\n")
-            return
-
-        course_name = input("\tInput the Name of the Course to which Teacher is going to be assigned:\n")
-        if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
-            return
-
-        name = input(f"{tab}Input a Name of a Teacher:{new_line}")
-        if not name:
-            print(f"{tab}Error: Teacher's Name cannot be empty.{new_line}")
-            return
-
-        surname = input(f"{tab}Input a Surname of a Teacher:{new_line}")
-        if not surname:
-            print(f"{tab}Error: Teacher's Surname cannot be empty.{new_line}")
-            return
-
-        specialization = input(f"{tab}Input a Specialization of a Teacher:{new_line}")
-        if not specialization:
-            print(f"{tab}Error: Teacher's Specialization cannot be empty.{new_line}")
-            return
-
-        tutor = Teacher(
-            name=name.capitalize(),
-            surname=surname.capitalize(),
-            specialization=specialization.capitalize()
-        )
-
-        for c, course in enumerate(courses):
-            if course.title == course_name.capitalize():
-                course.teachers.append(tutor)
-
-                print(
-                    f"""
-                        {tab}Teacher:
-                        {tutor.name}
-                        {tutor.surname}
-                        {tutor.specialization}
-                        added to the list of Teachers.{new_line}
-                    """
-                )
-
-    def reassign_student(courses: List[Course]):
-        if len(courses) == 0:
-            print("\tEmpty list of Courses. Please register a Course first.\n")
-            return
-
-        course_name_from = input("\tInput the Name of the Course from which Student is going to be reassigned:\n")
-        if not course_name_from:
-            print("\tMissing Course title. Please pass a Course title.\n")
-            return
-
-        surname = input(f"{tab}Input a Surname of a Student to reassign:{new_line}")
-        if not surname:
-            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
-            return
-
-        course_name_to = input("\tInput the Name of the Course to which Student is going to be reassigned:\n")
-        if not course_name_to:
-            print("\tMissing Course title. Please pass a Course title.\n")
-            return
-
-        for c, course in enumerate(courses):
-            if course.title == course_name_from.capitalize():
-                for s, student in enumerate(course.students):
-                    if student.surname == surname.capitalize():
-                        for t, training in enumerate(courses):
-                            if training.title == course_name_to.capitalize():
-                                training.students.append(student)
-                                course.students.remove(student)
-                                print(
-                                    f"""
-                                         {tab}Student:
-                                         {student.name}
-                                         {student.surname}
-                                         {student.phone}
-                                         {student.email}
-                                         reassigned from the list of Students of {course_name_from}{new_line}
-                                         and joined Students of {course_name_to}
-                                     """
-                                )
-
     menu_prompt = """
         Cwiczenie R2:
 
-        1 - Add a Course
-        2 - List Courses
-        3 - Remove a Course
-        4 - Add a Student to the Course
-        5 - Remove a Student from the Course
-        6 - List Courses along with registered Students
-        7 - Add a Teacher to the Course
-        8 - Reassign a Student to different Course
-        9 - Exit
+        1 - Add a Clinic
+        2 - Remove Clinic
+        3 - Add a Patient
+        4 - Remove a Patient
+        5 - List Clinics
+        6 - List Clinics along with registered Patients
+        7 - Exit
 
         Enter your choice:\n
         """
 
     menu_options = {
-        "1": create_course,
-        "2": list_courses,
-        "3": remove_course,
-        "4": add_student,
-        "5": remove_student,
-        "6": list_students,
-        "7": add_teacher,
-        "8": reassign_student
+        "1": add_clinic,
+        "2": remove_clinic,
+        "3": add_patient,
+        "4": remove_patient,
+        "5": list_clinics,
+        "6": list_patients
     }
 
     def menu() -> None:
@@ -326,23 +236,19 @@ def training_school() -> None:
         :return: None
         """
 
-        while (selection := input(menu_prompt)) != "9":
+        while (selection := input(menu_prompt)) != "7":
             if selection == "1":
-                menu_options[selection](courses)
+                menu_options[selection](clinics)
             elif selection == "2":
-                menu_options[selection](courses)
+                menu_options[selection](clinics)
             elif selection == "3":
-                menu_options[selection](courses)
+                menu_options[selection](clinics)
             elif selection == "4":
-                menu_options[selection](courses)
+                menu_options[selection](clinics)
             elif selection == "5":
-                menu_options[selection](courses)
+                menu_options[selection](clinics)
             elif selection == "6":
-                menu_options[selection](courses)
-            elif selection == "7":
-                menu_options[selection](courses)
-            elif selection == "8":
-                menu_options[selection](courses)
+                menu_options[selection](clinics)
             else:
                 print("Invalid input selected. Please try again.")
 
