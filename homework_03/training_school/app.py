@@ -111,7 +111,7 @@ def training_school() -> None:
             print("\tEmpty list of Courses. Please register a Course first.\n")
             return
 
-        course_name = input("\tInput the Name of the Course to which student is going to be assigned:\n")
+        course_name = input("\tInput the Name of the Course to which Student is going to be assigned:\n")
         if not course_name:
             print("\tMissing Course title. Please pass a Course title.\n")
             return
@@ -163,8 +163,41 @@ def training_school() -> None:
                     """
                 )
 
-    def remove_student():
-        pass
+    def remove_student(courses: List[Course]):
+        if len(courses) == 0:
+            print("\tEmpty list of Courses. Please register a Course first.\n")
+            return
+
+        course_name = input("\tInput the Name of the Course from which Student is going to be deleted:\n")
+        if not course_name:
+            print("\tMissing Course title. Please pass a Course title.\n")
+            return
+
+        surname = input(f"{tab}Input a Surname of a Student to delete:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
+            return
+
+        for c, course in enumerate(courses):
+            print(c, course.title)
+            if course.title != course_name.capitalize():
+                print(f"{tab}Error: Course Title not in a list of registered Courses.{new_line}")
+                return
+            if course.title == course_name.capitalize():
+                for s, student in enumerate(course.students):
+                    if student.surname == surname.capitalize():
+                        course.students.remove(student)
+
+                        print(
+                            f"""
+                                {tab}Student:
+                                {student.name}
+                                {student.surname}
+                                {student.phone}
+                                {student.email}
+                                deleted from the list of Students.{new_line}
+                            """
+                        )
 
     def list_students():
         pass
@@ -217,7 +250,7 @@ def training_school() -> None:
             elif selection == "4":
                 menu_options[selection](courses)
             elif selection == "5":
-                menu_options[selection]()
+                menu_options[selection](courses)
             elif selection == "6":
                 menu_options[selection]()
             elif selection == "7":
