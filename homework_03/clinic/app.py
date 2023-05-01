@@ -73,88 +73,77 @@ def clinic() -> None:
                 )
 
     def add_patient(clinics: List[Clinic]) -> None:
-        """
-        Prompts the user for a Title of a Course to be removed from a list of Courses.
-        :param courses:
-        :return: None
-        """
-
-        if len(courses) == 0:
-            print("\tEmpty list of Courses. Please register a Course first.\n")
+        if len(clinics) == 0:
+            print("\tEmpty list of Clinics. Please register a Clinic first.\n")
             return
 
-        course_name = input("\tInput the Name of the Course to be removed:\n")
-        if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
+        clinic_name = input("\tInput the Name of the Clinic to which Patient is going to be assigned:\n")
+        if not clinic_name:
+            print("\tMissing Clinic's Name. Please pass a Clinic Name.\n")
             return
 
-        for c, course in enumerate(courses):
-            if course.title == course_name.capitalize():
-                courses.pop(c)
-                print(f"{tab}Course {course.title} removed from the list of registered Courses.{new_line}")
+        name = input(f"{tab}Input a Name of a Patient:{new_line}")
+        if not name:
+            print(f"{tab}Error: Patient's Name cannot be empty.{new_line}")
+            return
+
+        surname = input(f"{tab}Input a Surname of a Patient:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Patient's Surname cannot be empty.{new_line}")
+            return
+
+        diseases = input(f"{tab}Input a Disease name of a Patient:{new_line}")
+        if not diseases:
+            print(f"{tab}Error: Patient's Disease name cannot be empty.{new_line}")
+            return
+
+        sick = Patient(
+            name=name.capitalize(),
+            surname=surname.capitalize(),
+        )
+
+        for c, clinic in enumerate(clinics):
+            if clinic.name == clinic_name.capitalize():
+                clinic.patients.append(sick)
+
                 print(
                     f"""
-                    Course {course.title} removed:
-                        ID: {c + 1}
-                        TITLE: {course.title}
-                        CITY: {course.city}
-                        DATE: {course.date}
-                        TEACHERS: {course.teachers}
-                        STUDENTS: {course.students}
-                    """
+                         {tab}Patient:
+                         {sick.name}
+                         {sick.surname}
+                         added to the list of Patients.{new_line}
+                     """
                 )
 
     def remove_patient(clinics: List[Clinic]):
-        if len(courses) == 0:
-            print("\tEmpty list of Courses. Please register a Course first.\n")
+        if len(clinics) == 0:
+            print("\tEmpty list of Clinics. Please register a Clinic first.\n")
             return
 
-        course_name = input("\tInput the Name of the Course to which Student is going to be assigned:\n")
-        if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
+        clinic_name = input("\tInput the Name of the Clinic from which Patient is going to be deleted:\n")
+        if not clinic_name:
+            print("\tMissing Clinic's Name. Please pass Clinic's Name.\n")
             return
 
-        name = input(f"{tab}Input a Name of a Student:{new_line}")
-        if not name:
-            print(f"{tab}Error: Student's Name cannot be empty.{new_line}")
-            return
-
-        surname = input(f"{tab}Input a Surname of a Student:{new_line}")
+        surname = input(f"{tab}Input a Surname of a Patient to be deleted:{new_line}")
         if not surname:
-            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
+            print(f"{tab}Error: Patient's Surname cannot be empty.{new_line}")
             return
 
-        phone = input(f"{tab}Input a Phone number of a Student:{new_line}")
-        if not phone:
-            print(f"{tab}Error: Student's Phone Number cannot be empty.{new_line}")
-            return
+        for c, clinic in enumerate(clinics):
+            if clinic.name == clinic_name.capitalize():
+                for p, patient in enumerate(clinic.patients):
+                    if patient.surname == surname.capitalize():
+                        clinic.patients.remove(patient)
 
-        email = input(f"{tab}Input an Email address of a Student:{new_line}")
-        if not email:
-            print(f"{tab}Error: Student's Email address cannot be empty.{new_line}")
-            return
-
-        pupil = Student(
-            name=name.capitalize(),
-            surname=surname.capitalize(),
-            phone=phone,
-            email=email,
-        )
-
-        for c, course in enumerate(courses):
-            if course.title == course_name.capitalize():
-                course.students.append(pupil)
-
-                print(
-                    f"""
-                        {tab}Student:
-                        {pupil.name}
-                        {pupil.surname}
-                        {pupil.phone}
-                        {pupil.email}
-                        added to the list of Students.{new_line}
-                    """
-                )
+                        print(
+                            f"""
+                                {tab}Patient:
+                                {patient.name}
+                                {patient.surname}
+                                deleted from the list of Patients.{new_line}
+                            """
+                        )
 
     def list_clinics(clinics: List[Clinic]):
         """

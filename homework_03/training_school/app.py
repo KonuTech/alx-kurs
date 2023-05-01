@@ -83,7 +83,7 @@ def training_school() -> None:
 
         course_name = input("\tInput the Name of the Course to be removed:\n")
         if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
+            print("\tMissing Course's Title. Please pass Course Title.\n")
             return
 
         for c, course in enumerate(courses):
@@ -109,7 +109,7 @@ def training_school() -> None:
 
         course_name = input("\tInput the Name of the Course to which Student is going to be assigned:\n")
         if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
+            print("\tMissing Course's Title. Please pass Course Title.\n")
             return
 
         name = input(f"{tab}Input a Name of a Student:{new_line}")
@@ -161,10 +161,10 @@ def training_school() -> None:
 
         course_name = input("\tInput the Name of the Course from which Student is going to be deleted:\n")
         if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
+            print("\tMissing Course's Title. Please pass Course Title.\n")
             return
 
-        surname = input(f"{tab}Input a Surname of a Student to delete:{new_line}")
+        surname = input(f"{tab}Input a Surname of a Student to deleted:{new_line}")
         if not surname:
             print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
             return
@@ -216,7 +216,7 @@ def training_school() -> None:
 
         course_name = input("\tInput the Name of the Course to which Teacher is going to be assigned:\n")
         if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
+            print("\tMissing Course's Title. Please pass Course Title.\n")
             return
 
         name = input(f"{tab}Input a Name of a Teacher:{new_line}")
@@ -261,17 +261,17 @@ def training_school() -> None:
 
         course_name_from = input("\tInput the Name of the Course from which Student is going to be reassigned:\n")
         if not course_name_from:
-            print("\tMissing Course title. Please pass a Course title.\n")
+            print("\tMissing Course's Title. Please pass Course Title.\n")
             return
 
-        surname = input(f"{tab}Input a Surname of a Student to reassign:{new_line}")
+        surname = input(f"{tab}Input a Surname of a Student to be reassigned:{new_line}")
         if not surname:
             print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
             return
 
         course_name_to = input("\tInput the Name of the Course to which Student is going to be reassigned:\n")
         if not course_name_to:
-            print("\tMissing Course title. Please pass a Course title.\n")
+            print("\tMissing Course's Title. Please pass Course Title.\n")
             return
 
         for c, course in enumerate(courses):
