@@ -1,9 +1,8 @@
 from typing import List
 
 from homework_03.clinic.models.clinic import Clinic
-from homework_03.clinic.models.patient import Patient
 from homework_03.clinic.models.disease import Disease
-
+from homework_03.clinic.models.patient import Patient
 
 tab = "\t"
 new_line = "\n"
@@ -187,11 +186,72 @@ def clinic() -> None:
                      """
                 )
 
-    def add_disease():
-        pass
+    def add_disease(clinics: List[Clinic]):
+        if len(clinics) == 0:
+            print("\tEmpty list of Clinic. Please register a Clini first.\n")
+            return
 
-    def list_diseases():
-        pass
+        clinic_name = input("\tInput the Name of the Clinic from which Patient is going to be deleted:\n")
+        if not clinic_name:
+            print("\tMissing Clinic's Name. Please pass Clinic's Name.\n")
+            return
+
+        surname = input("\tInput Surname of the Patient to which Disease is going to be assigned:\n")
+        if not surname:
+            print("\tMissing Patient's Surname. Please pass Patient Surname.\n")
+            return
+
+        disease = input(f"{tab}Input a Name of a Disease:{new_line}")
+        if not disease:
+            print(f"{tab}Error: Patient's Disease Name cannot be empty.{new_line}")
+            return
+
+        sickness = Disease(
+            name=disease.capitalize(),
+        )
+
+        for c, clinic in enumerate(clinics):
+            if clinic.name == clinic_name.capitalize():
+                for p, patient in enumerate(clinic.patients):
+                    if patient.surname == surname.capitalize():
+                        patient.diseases.append(sickness)
+
+                        print(
+                            f"""
+                           {tab}Disease added to the Patient:
+                           {patient.name}
+                           {patient.surname}
+                           {patient.diseases}{new_line}
+                            """
+                        )
+
+    def list_diseases(clinics: List[Clinic]):
+        for c, clinic in enumerate(clinics):
+            print(
+                f"""
+                 Clinic {clinic.name}:
+                     ID: {c + 1}
+                     NAME: {clinic.name}
+                     CITY: {clinic.city}
+                 """
+            )
+            for p, patient in enumerate(clinic.patients):
+                print(
+                    f"""
+                    {tab}Patient:
+                    {patient.name}
+                    {patient.surname}
+                    {new_line}
+                    """
+                )
+                for d, disease in enumerate(patient.diseases):
+                    print(
+                        f"""
+                        {tab}Disease:
+                        {disease.name}
+                        {new_line}
+                        """
+                    )
 
     menu_prompt = """
         Cwiczenie R2:
@@ -226,11 +286,6 @@ def clinic() -> None:
 
         Enter your choice:\n
         """
-
-    # menu_options = {
-    #     "1": clinic,
-    #     "2": patient
-    # }
 
     clinic_menu_options = {
         "1": add_clinic,
