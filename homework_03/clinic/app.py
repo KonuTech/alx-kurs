@@ -1,6 +1,8 @@
 from typing import List
 
 from homework_03.clinic.models.clinic import Clinic
+from homework_03.clinic.models.patient import Patient
+from homework_03.clinic.models.disease import Disease
 
 
 tab = "\t"
@@ -12,62 +14,63 @@ def clinic() -> None:
 
     def add_clinic(clinics: List[Clinic]) -> None:
         """
-        Prompts the user to create a new Course object and adds it to the given list.
-        :param courses:
+        Prompts the user to create a new Clinic object and adds it to the given list.
+        :param clinics:
         :return: None
         """
 
-        title = input(f"{tab}Input the Name of the Course:{new_line}")
-        if not title:
-            print(f"{tab}Error: Course Title cannot be empty.{new_line}")
+        name = input(f"{tab}Input the Name of the Clinic:{new_line}")
+        if not name:
+            print(f"{tab}Error: Clinic Name cannot be empty.{new_line}")
             return
 
-        city = input(f"{tab}Input the City of the Course:{new_line}")
+        city = input(f"{tab}Input the City of the Clinic:{new_line}")
         if not city:
-            print(f"{tab}Error: Course City cannot be empty.{new_line}")
+            print(f"{tab}Error: Clinic City cannot be empty.{new_line}")
             return
 
-        date = input(f"{tab}Input the Date of the Course:{new_line}")
-        if not date:
-            print(f"{tab}Error: Course Date cannot be empty.{new_line}")
-            return
+        hospital = Clinic(name=name.capitalize(), city=city.capitalize())
 
-        training = Course(title=title.capitalize(), city=city.capitalize(), date=date.capitalize())
-
-        for c, course in enumerate(courses):
-            if course.title == training.title:
-                print(f"{tab}Error: Course Title already in a list of Courses.{new_line}")
+        for c, clinic in enumerate(clinics):
+            if clinic.name == hospital.name:
+                print(f"{tab}Error: Clinic Name already in a list of Clinics.{new_line}")
                 return
 
-        courses.append(training)
+        clinics.append(hospital)
         print(
             f"""
-            {tab}Course {training.title}-{training.city}-{training.date} added to the Courses list.{new_line}
+            {tab}Clinic {hospital.name}-{hospital.city} added to the Clinics list.{new_line}
             """
         )
 
     def remove_clinic(clinics: List[Clinic]) -> None:
         """
-        Prompts the user to list all registered Courses.
-        :param courses:
+        Prompts the user to provide a Name of a Clinics to be removed.
+        :param clinics:
         :return: None
         """
-        if len(courses) == 0:
-            print(f"{tab}Empty list of Courses. Please register a Course first.{new_line}")
+        if len(clinics) == 0:
+            print(f"{tab}Empty list of Clinics. Please register a Clinic first.{new_line}")
             return
 
-        for c, course in enumerate(courses):
-            print(
-                f"""
-                List of registered Courses:
-                ID: {c + 1}
-                TITLE: {course.title}
-                CITY: {course.city}
-                DATE: {course.date}
-                TEACHERS: {course.teachers}
-                STUDENTS: {course.students}
-                """
-            )
+        clinic_name = input("\tInput the Name of the Clinic to be removed:\n")
+        if not clinic_name:
+            print("\tMissing Clinic's Name. Please pass a Clinic's Name.\n")
+            return
+
+        for c, clinic in enumerate(clinics):
+            if clinic.name == clinic_name.capitalize():
+                clinics.pop(c)
+                print(f"{tab}Clinic {clinic.name} removed from the list of registered Clinics.{new_line}")
+                print(
+                    f"""
+                    Clinic {clinic.name} removed:
+                        ID: {c + 1}
+                        NAME: {clinic.name}
+                        CITY: {clinic.city}
+                        STUDENTS: {clinic.patients}
+                    """
+                )
 
     def add_patient(clinics: List[Clinic]) -> None:
         """
@@ -154,36 +157,25 @@ def clinic() -> None:
                 )
 
     def list_clinics(clinics: List[Clinic]):
-        if len(courses) == 0:
-            print("\tEmpty list of Courses. Please register a Course first.\n")
+        """
+                Prompts the user to list all registered Clinics.
+                :param clinics:
+                :return: None
+                """
+        if len(clinics) == 0:
+            print(f"{tab}Empty list of Clinics. Please register a Clinic first.{new_line}")
             return
 
-        course_name = input("\tInput the Name of the Course from which Student is going to be deleted:\n")
-        if not course_name:
-            print("\tMissing Course title. Please pass a Course title.\n")
-            return
-
-        surname = input(f"{tab}Input a Surname of a Student to delete:{new_line}")
-        if not surname:
-            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
-            return
-
-        for c, course in enumerate(courses):
-            if course.title == course_name.capitalize():
-                for s, student in enumerate(course.students):
-                    if student.surname == surname.capitalize():
-                        course.students.remove(student)
-
-                        print(
-                            f"""
-                                {tab}Student:
-                                {student.name}
-                                {student.surname}
-                                {student.phone}
-                                {student.email}
-                                deleted from the list of Students.{new_line}
-                            """
-                        )
+        for c, clinic in enumerate(clinics):
+            print(
+                f"""
+                        List of registered Courses:
+                        ID: {c + 1}
+                        NAME: {clinic.name}
+                        CITY: {clinic.city}
+                        PATIENTS: {clinic.patients}
+                        """
+            )
 
     def list_patients(clinics: List[Clinic]):
         for c, course in enumerate(courses):
