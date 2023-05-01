@@ -92,10 +92,10 @@ def clinic() -> None:
             print(f"{tab}Error: Patient's Surname cannot be empty.{new_line}")
             return
 
-        diseases = input(f"{tab}Input a Disease name of a Patient:{new_line}")
-        if not diseases:
-            print(f"{tab}Error: Patient's Disease name cannot be empty.{new_line}")
-            return
+        # diseases = input(f"{tab}Input a Disease name of a Patient:{new_line}")
+        # if not diseases:
+        #     print(f"{tab}Error: Patient's Disease name cannot be empty.{new_line}")
+        #     return
 
         sick = Patient(
             name=name.capitalize(),
@@ -187,7 +187,23 @@ def clinic() -> None:
                      """
                 )
 
+    def add_disease():
+        pass
+
+    def list_diseases():
+        pass
+
     menu_prompt = """
+        Cwiczenie R2:
+
+        1 - Clinic
+        2 - Patient
+        3 - Exit
+
+        Enter your choice:\n
+        """
+
+    clinic_menu_prompt = """
         Cwiczenie R2:
 
         1 - Add a Clinic
@@ -201,7 +217,22 @@ def clinic() -> None:
         Enter your choice:\n
         """
 
-    menu_options = {
+    patient_menu_prompt = """
+        Cwiczenie R2:
+
+        1 - Add a Disease
+        2 - List Patient's Diseases
+        3 - Exit
+
+        Enter your choice:\n
+        """
+
+    # menu_options = {
+    #     "1": clinic,
+    #     "2": patient
+    # }
+
+    clinic_menu_options = {
         "1": add_clinic,
         "2": remove_clinic,
         "3": add_patient,
@@ -210,24 +241,41 @@ def clinic() -> None:
         "6": list_patients
     }
 
+    patient_menu_options = {
+        "1": add_disease,
+        "2": list_diseases,
+    }
+
     def menu() -> None:
         """
         :return: None
         """
 
-        while (selection := input(menu_prompt)) != "7":
+        while (selection := input(menu_prompt)) != "3":
             if selection == "1":
-                menu_options[selection](clinics)
+                while (selection := input(clinic_menu_prompt)) != "7":
+                    if selection == "1":
+                        clinic_menu_options[selection](clinics)
+                    elif selection == "2":
+                        clinic_menu_options[selection](clinics)
+                    elif selection == "3":
+                        clinic_menu_options[selection](clinics)
+                    elif selection == "4":
+                        clinic_menu_options[selection](clinics)
+                    elif selection == "5":
+                        clinic_menu_options[selection](clinics)
+                    elif selection == "6":
+                        clinic_menu_options[selection](clinics)
+                    else:
+                        print("Invalid input selected. Please try again.")
             elif selection == "2":
-                menu_options[selection](clinics)
-            elif selection == "3":
-                menu_options[selection](clinics)
-            elif selection == "4":
-                menu_options[selection](clinics)
-            elif selection == "5":
-                menu_options[selection](clinics)
-            elif selection == "6":
-                menu_options[selection](clinics)
+                while (selection := input(patient_menu_prompt)) != "3":
+                    if selection == "1":
+                        patient_menu_options[selection](clinics)
+                    elif selection == "2":
+                        patient_menu_options[selection](clinics)
+                    else:
+                        print("Invalid input selected. Please try again.")
             else:
                 print("Invalid input selected. Please try again.")
 
