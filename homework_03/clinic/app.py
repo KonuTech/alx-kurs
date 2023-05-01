@@ -254,7 +254,7 @@ def clinic() -> None:
                     )
 
     menu_prompt = """
-        Cwiczenie R2:
+        Cwiczenie 71_3:
 
         1 - Clinic
         2 - Patient
@@ -264,7 +264,7 @@ def clinic() -> None:
         """
 
     clinic_menu_prompt = """
-        Cwiczenie R2:
+        Cwiczenie 71_3:
 
         1 - Add a Clinic
         2 - Remove Clinic
@@ -278,7 +278,7 @@ def clinic() -> None:
         """
 
     patient_menu_prompt = """
-        Cwiczenie R2:
+        Cwiczenie 71_3:
 
         1 - Add a Disease
         2 - List Patient's Diseases
