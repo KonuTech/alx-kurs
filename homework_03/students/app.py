@@ -11,7 +11,7 @@ ENCODING = "utf-8"
 DELIMITER = ";"
 
 
-def open_file(file_name, mode="r", encoding="utf-8"):
+def open_file(file_name, mode="r", encoding=ENCODING):
     return open(file=file_name, mode=mode, encoding=encoding)
 
 
@@ -80,7 +80,7 @@ def students():
         print(f"{tab}Student {name.capitalize()} {surname.capitalize()} not found. Please try again.{new_line}")
         close_file(file)
 
-    def remove_student(file_name, delimiter=DELIMITER, encoding="utf-8"):
+    def remove_student(file_name, delimiter=DELIMITER, encoding=ENCODING):
 
         surname = input(f"{tab}Provide Student's Surname to be deleted.{new_line}")
 
@@ -100,7 +100,7 @@ def students():
 
         print(f"{tab}Student {surname} deleted.")
 
-    def edit_student(file_name, delimiter=DELIMITER, encoding="utf-8"):
+    def edit_student(file_name, delimiter=DELIMITER, encoding=ENCODING):
 
         surname = input(f"{tab}Editing a Student data. Provide Student's Surname to be searched for.{new_line}")
 
@@ -150,7 +150,7 @@ def students():
             """
         )
 
-    def add_grade(file_name, delimiter=DELIMITER, encoding="utf-8"):
+    def add_grade(file_name, delimiter=DELIMITER, encoding=ENCODING):
 
         surname = input(f"{tab}Input the Surname of a Student:{new_line}")
         if not surname:
@@ -182,7 +182,6 @@ def students():
 
                 # print("value:", pupil.grades, grade)
                 # print("type:", type(pupil.grades), type(grade))
-                # print("appended", pupil.grades.append(grade))
 
                 pupil.grades.append(grade)
 
@@ -193,8 +192,34 @@ def students():
 
         close_file(file)
 
-    def get_mean(file_name):
-        pass
+    def get_mean(file_name, delimiter=DELIMITER, encoding=ENCODING):
+
+        surname = input(f"{tab}Input the Surname of a Student:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Student's Surname cannot be empty.{new_line}")
+            return
+
+        file = open_file(file_name, mode="r", encoding=encoding)
+        rows = file.readlines()
+        close_file(file)
+
+        for r, row in enumerate(rows):
+            if row.strip().split(delimiter)[1] == surname.capitalize():
+
+                pupil = Student(
+                    name=row.strip().split(delimiter)[0],
+                    surname=row.strip().split(delimiter)[1],
+                    group=row.strip().split(delimiter)[2],
+                    grades=eval(row.strip().split(delimiter)[3])
+                )
+
+                sum = 0
+                grades_frequency = len(pupil.grades)
+
+                for g, grade in enumerate(pupil.grades):
+                    sum += int(grade)
+
+                print(f"""{tab}Student {pupil.surname} got an Average of{new_line}{sum / grades_frequency}{new_line}""")
 
     menu_prompt = f"""
             Cwiczenie 85:
