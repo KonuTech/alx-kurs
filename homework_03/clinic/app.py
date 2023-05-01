@@ -147,10 +147,10 @@ def clinic() -> None:
 
     def list_clinics(clinics: List[Clinic]):
         """
-                Prompts the user to list all registered Clinics.
-                :param clinics:
-                :return: None
-                """
+        Prompts the user to list all registered Clinics.
+        :param clinics:
+        :return: None
+        """
         if len(clinics) == 0:
             print(f"{tab}Empty list of Clinics. Please register a Clinic first.{new_line}")
             return
@@ -167,26 +167,24 @@ def clinic() -> None:
             )
 
     def list_patients(clinics: List[Clinic]):
-        for c, course in enumerate(courses):
+        for c, clinic in enumerate(clinics):
             print(
                 f"""
-                Course {course.title} removed:
-                    ID: {c + 1}
-                    TITLE: {course.title}
-                    CITY: {course.city}
-                    DATE: {course.date}
-                """
+                 Clinic {clinic.name}:
+                     ID: {c + 1}
+                     NAME: {clinic.name}
+                     CITY: {clinic.city}
+                 """
             )
-            for s, student in enumerate(course.students):
+            for p, patient in enumerate(clinic.patients):
                 print(
                     f"""
-                        {tab}Student:
-                        {student.name}
-                        {student.surname}
-                        {student.phone}
-                        {student.email}
-                        {new_line}
-                    """
+                         {tab}Student:
+                         {patient.name}
+                         {patient.surname}
+                         {patient.diseases}
+                         {new_line}
+                     """
                 )
 
     menu_prompt = """

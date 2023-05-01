@@ -190,7 +190,7 @@ def training_school() -> None:
         for c, course in enumerate(courses):
             print(
                 f"""
-                Course {course.title} removed:
+                Course {course.title}:
                     ID: {c + 1}
                     TITLE: {course.title}
                     CITY: {course.city}
