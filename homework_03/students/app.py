@@ -1,6 +1,3 @@
-import ast
-from typing import List
-
 from homework_03.students.models.student import Student
 
 tab = "\t"
@@ -20,7 +17,6 @@ def close_file(file_name):
 
 
 def students():
-
     def add_student(file_name, mode="a", delimiter=DELIMITER, encoding=ENCODING):
 
         name = input(f"{tab}Input the Name of a Student:{new_line}")
@@ -180,9 +176,6 @@ def students():
                     grades=eval(row.strip().split(delimiter)[3])
                 )
 
-                # print("value:", pupil.grades, grade)
-                # print("type:", type(pupil.grades), type(grade))
-
                 pupil.grades.append(grade)
 
                 file = open_file(file_name, mode="a", encoding=ENCODING)
@@ -205,7 +198,6 @@ def students():
 
         for r, row in enumerate(rows):
             if row.strip().split(delimiter)[1] == surname.capitalize():
-
                 pupil = Student(
                     name=row.strip().split(delimiter)[0],
                     surname=row.strip().split(delimiter)[1],
@@ -213,13 +205,7 @@ def students():
                     grades=eval(row.strip().split(delimiter)[3])
                 )
 
-                sum = 0
-                grades_frequency = len(pupil.grades)
-
-                for g, grade in enumerate(pupil.grades):
-                    sum += int(grade)
-
-                print(f"""{tab}Student {pupil.surname} got an Average of{new_line}{sum / grades_frequency}{new_line}""")
+                print(f"""{tab}Student {pupil.surname} got an Average of{new_line}{pupil.get_average()}{new_line}""")
 
     menu_prompt = f"""
             Cwiczenie 85:

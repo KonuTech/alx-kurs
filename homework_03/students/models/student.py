@@ -9,8 +9,8 @@ class Student:
         self.group = group
         self.grades = grades
 
-    def add_grade(self, grade, results):
-        return results.append(grade)
+    def add_grade(self, grade):
+        return self.grades.append(grade)
 
     def list_grades(self):
         for g, grade in enumerate(self.grades):
@@ -20,6 +20,6 @@ class Student:
         sum = 0
         grades_frequency = len(self.grades)
         for g, grade in enumerate(self.grades):
-            sum += grade
+            sum += int(grade)
 
         return sum / grades_frequency
