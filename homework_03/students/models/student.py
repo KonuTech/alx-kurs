@@ -1,13 +1,16 @@
+from typing import List
+
+
 class Student:
 
-    def __init__(self, name: str, surname: str, group: int) -> None:
+    def __init__(self, name: str, surname: str, group: str, grades: List) -> None:
         self.name = name
         self.surname = surname
         self.group = group
-        self.grades = []
+        self.grades = grades
 
-    def add_grade(self, grade):
-        return self.grades.append(grade)
+    def add_grade(self, grade, results):
+        return results.append(grade)
 
     def list_grades(self):
         for g, grade in enumerate(self.grades):
