@@ -4,17 +4,16 @@ from homework_03.contacts.models.contact import Contact
 
 tab = "\t"
 new_line = "\n"
-FILE_NAME = "dane.dat"
-MODE = "rb"
+FILE_NAME = "people.dat"
+MODE = "wb"
 ENCODING = "utf-8"
 DELIMITER = ";"
 
 notes = []
 
-def open_file(file_name=FILE_NAME, mode=MODE):
-    file = open(file_name=file_name, mode=mode)
 
-    return pickle.load(file)
+def open_file(file_name=FILE_NAME, mode=MODE):
+    return open(file_name, mode)
 
 
 def close_file(file_name=FILE_NAME):
@@ -45,6 +44,23 @@ def contacts():
                         EMAILS: {note.emails}
                     """
                 )
+
+                with open('people.dat', 'rb') as f:
+                    while True:
+                        try:
+                            # Load the next pickled object from the file
+                            data = pickle.load(f)
+                            # Process the pickled object
+                            print(f"""
+                            Contact details:
+                                NAME: {data.name}
+                                SURNAME: {data.surname}
+                                PHONES: {data.phones}
+                                EMAILS: {data.emails}
+                            """)
+                        except EOFError:
+                            # The end of the file has been reached
+                            break
 
     def add_contact(file_name, mode="r", delimiter=DELIMITER, encoding=ENCODING):
 
@@ -86,6 +102,10 @@ def contacts():
             {tab}Contact {person.name}-{person.surname}-{person.phones}-{person.emails} added to the Clinics list.{new_line}
             """
         )
+
+        f = open_file(file_name=file_name, mode='wb')
+        pickle.dump(person, f)
+        close_file(f)
 
     def remove_contact(file_name, delimiter=DELIMITER, encoding=ENCODING):
         """
