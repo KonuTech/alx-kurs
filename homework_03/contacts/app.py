@@ -1,27 +1,91 @@
+import pickle
+
 from homework_03.contacts.models.contact import Contact
 
 tab = "\t"
 new_line = "\n"
-FILE_NAME = "dane.txt"
-MODE = "r"
+FILE_NAME = "dane.dat"
+MODE = "rb"
 ENCODING = "utf-8"
 DELIMITER = ";"
 
+notes = []
 
-def open_file(file_name, mode="r", encoding=ENCODING):
-    return open(file=file_name, mode=mode, encoding=encoding)
+def open_file(file_name=FILE_NAME, mode=MODE):
+    file = open(file_name=file_name, mode=mode)
+
+    return pickle.load(file)
 
 
-def close_file(file_name):
+def close_file(file_name=FILE_NAME):
     file_name.close()
 
 
 def contacts():
-    def show_contact(file_name, mode="a", delimiter=DELIMITER, encoding=ENCODING):
-        pass
+    def show_contact(file_name, mode="rb", delimiter=DELIMITER, encoding=ENCODING):
+
+        if len(notes) == 0:
+            print(f"{tab}Empty list of Contacts. Please register a Contact first.{new_line}")
+            return
+
+        contact_surname = input("\tInput the Surname of a Contact to be listed:\n")
+        if not contact_surname:
+            print("\tMissing Contact's Surname. Please pass a Contact's Surname.\n")
+            return
+
+        for n, note in enumerate(notes):
+            if note.surname == contact_surname.capitalize():
+                print(
+                    f"""
+                    List of registered Courses:
+                    ID: {n + 1}
+                    NAME: {note.name}
+                    SURNAME: {note.surname}
+                    PHONES: {note.phones}
+                    EMAILS: {note.emails}
+                    """
+                )
 
     def add_contact(file_name, mode="r", delimiter=DELIMITER, encoding=ENCODING):
-        pass
+
+        name = input(f"{tab}Input the Name of a Contact:{new_line}")
+        if not name:
+            print(f"{tab}Error: Contact's Name cannot be empty.{new_line}")
+            return
+
+        surname = input(f"{tab}Input the Surname of a Contact:{new_line}")
+        if not surname:
+            print(f"{tab}Error: Contact's Surname cannot be empty.{new_line}")
+            return
+
+        phone = input(f"{tab}Input a Phone Number of a Contact:{new_line}")
+        if not phone:
+            print(f"{tab}Error: Contact's Phone Number cannot be empty.{new_line}")
+            return
+
+        email = input(f"{tab}Input an E-mail of a Contact:{new_line}")
+        if not email:
+            print(f"{tab}Error: Contact's E-mail cannot be empty.{new_line}")
+            return
+
+        friend = Contact(
+            name=name.capitalize(),
+            surname=surname.capitalize(),
+            phones=phone,
+            emails=email
+        )
+
+        for n, note in enumerate(notes):
+            if note.surname == friend.surname:
+                print(f"{tab}Error: Contact Surname already in a list of Contacts.{new_line}")
+                return
+
+        notes.append(friend)
+        print(
+            f"""
+            {tab}Contact {friend.name}-{friend.surname}-{friend.phones}-{friend.emails} added to the Clinics list.{new_line}
+            """
+        )
 
     def remove_contact(file_name, delimiter=DELIMITER, encoding=ENCODING):
         pass
