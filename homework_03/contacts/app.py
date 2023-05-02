@@ -6,8 +6,6 @@ tab = "\t"
 new_line = "\n"
 FILE_NAME = "people.dat"
 MODE = "wb"
-ENCODING = "utf-8"
-DELIMITER = ";"
 
 notes = []
 
@@ -16,12 +14,8 @@ def open_file(file_name=FILE_NAME, mode=MODE):
     return open(file_name, mode)
 
 
-def close_file(file_name=FILE_NAME):
-    file_name.close()
-
-
 def contacts():
-    def show_contact(file_name, mode="rb", delimiter=DELIMITER, encoding=ENCODING):
+    def show_contact():
 
         if len(notes) == 0:
             print(f"{tab}Empty list of Contacts. Please register a Contact first.{new_line}")
@@ -45,7 +39,7 @@ def contacts():
                     """
                 )
 
-    def add_contact(file_name, mode="r", delimiter=DELIMITER, encoding=ENCODING):
+    def add_contact(file_name):
 
         name = input(f"{tab}Input the Name of a Contact:{new_line}")
         if not name:
@@ -82,15 +76,15 @@ def contacts():
         notes.append(person)
         print(
             f"""
-            {tab}Contact {person.name}-{person.surname}-{person.phones}-{person.emails} added to the Clinics list.{new_line}
+            {tab}Contact {person.name}-{person.surname}-{person.phones}-{person.emails} added to the Clinics list.\n
             """
         )
 
         f = open_file(file_name=file_name, mode='wb')
         pickle.dump(person, f)
-        close_file(f)
+        f.close()
 
-    def remove_contact(file_name, delimiter=DELIMITER, encoding=ENCODING):
+    def remove_contact():
         """
         Prompts the user to provide a Surname of a Contact to be removed.
         :return: None
@@ -118,7 +112,7 @@ def contacts():
                     """
                 )
 
-    def add_phone(file_name, delimiter=DELIMITER, encoding=ENCODING):
+    def add_phone():
 
         contact_surname = input(f"{tab}Input a Surname of a Contact:{new_line}")
         if not contact_surname:
@@ -141,7 +135,7 @@ def contacts():
 
                 person.phones.append(phone)
 
-    def remove_phone(file_name, delimiter=DELIMITER, encoding=ENCODING):
+    def remove_phone():
 
         contact_surname = input(f"{tab}Input a Surname of a Contact:{new_line}")
         if not contact_surname:
@@ -159,7 +153,7 @@ def contacts():
                     if phone == contact_phone:
                         note.phones.remove(contact_phone)
 
-    def add_email(file_name, delimiter=DELIMITER, encoding=ENCODING):
+    def add_email():
 
         contact_surname = input(f"{tab}Input a Surname of a Contact:{new_line}")
         if not contact_surname:
@@ -182,7 +176,7 @@ def contacts():
 
                 pupil.emails.append(email)
 
-    def remove_email(file_name, delimiter=DELIMITER, encoding=ENCODING):
+    def remove_email():
 
         contact_surname = input(f"{tab}Input the Surname of a Contact:{new_line}")
         if not contact_surname:
@@ -232,19 +226,19 @@ def contacts():
 
         while (selection := input(menu_prompt)) != "8":
             if selection == "1":
-                menu_options[selection](file_name=FILE_NAME)
+                menu_options[selection]()
             elif selection == "2":
                 menu_options[selection](file_name=FILE_NAME)
             elif selection == "3":
-                menu_options[selection](file_name=FILE_NAME)
+                menu_options[selection]()
             elif selection == "4":
-                menu_options[selection](file_name=FILE_NAME)
+                menu_options[selection]()
             elif selection == "5":
-                menu_options[selection](file_name=FILE_NAME)
+                menu_options[selection]()
             elif selection == "6":
-                menu_options[selection](file_name=FILE_NAME)
+                menu_options[selection]()
             elif selection == "7":
-                menu_options[selection](file_name=FILE_NAME)
+                menu_options[selection]()
             else:
                 print("Invalid input selected. Please try again.")
 
