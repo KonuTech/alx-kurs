@@ -45,23 +45,6 @@ def contacts():
                     """
                 )
 
-                with open('people.dat', 'rb') as f:
-                    while True:
-                        try:
-                            # Load the next pickled object from the file
-                            data = pickle.load(f)
-                            # Process the pickled object
-                            print(f"""
-                            Contact details:
-                                NAME: {data.name}
-                                SURNAME: {data.surname}
-                                PHONES: {data.phones}
-                                EMAILS: {data.emails}
-                            """)
-                        except EOFError:
-                            # The end of the file has been reached
-                            break
-
     def add_contact(file_name, mode="r", delimiter=DELIMITER, encoding=ENCODING):
 
         name = input(f"{tab}Input the Name of a Contact:{new_line}")
