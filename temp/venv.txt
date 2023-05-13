@@ -1,5 +1,15 @@
 virtualenv --python C:\Users\KonuTech\AppData\Local\Programs\Python\Python39\python.exe .venv
+virtualenv --python C:\Users\kurs\AppData\Local\Programs\Python\Python310\python.exe .venv
 Set-ExecutionPolicy Unrestricted -Scope Process
 .\.venv\Scripts\activate
 Linux: source .\.venv\Scripts\activate
 pip list
+
+PS C:\Users\kurs\Desktop\projekty_alx\project_blog> django-admin startproject mysite .
+PS C:\Users\kurs\Desktop\projekty_alx\project_blog> python manage.py runserver
+
+python manage.py startapp kt
+python manage.py makemigrations 
+
+python manage.py startapp kt
+python manage.py makemigrations
