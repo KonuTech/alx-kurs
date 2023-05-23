@@ -1,10 +1,10 @@
 from tkinter import Tk, Frame, Button, StringVar, Label
 
+
 def app():
 
     def calculate():
         calculation_text = calculation.get()
-        result_text = result.get()
 
         try:
             eval_result = eval(calculation_text)
@@ -13,18 +13,15 @@ def app():
             result.set("Error")
             print(f"Error: {e}")
 
-
     def append_to_calculation(text):
         current_calculation = calculation.get()
         calculation.set(current_calculation + text)
-
 
     def clear_calculation():
         calculation.set("")
         result.set("")
 
         print("Cleared calculation")
-
 
     root = Tk()
     root.geometry("250x350")
@@ -114,7 +111,6 @@ def app():
     # buttton clear
     button_clear = Button(frame_bottom, text="R", width=5, height=2, command=lambda: clear_calculation())
     button_clear.grid(row=3, column=4, columnspan=1)
-
 
     # run app
     root.mainloop()

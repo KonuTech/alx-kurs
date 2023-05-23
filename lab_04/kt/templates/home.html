@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1> Książka Telefoniczna </h1>
+    <h3>Menu:</h3>
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/dodaj">Dodaj nowy kontakt</a>
+        </li>
+    </ul>
+
+    <hr/>
+
+    <h3>Lista kontaktów</h3>
+
+    {% for x in dane  %}
+
+        <p>
+            <b>Imię:</b> {{ x.imie }}
+            <b>Nazwisko:</b> {{ x.nazwisko }}
+            <b>Telefon:</b> {{ x.telefon }}
+            <b>Email:</b> {{ x.email }}
+        </p>
+
+    {% endfor %}
+
+
+</body>
+</html>
