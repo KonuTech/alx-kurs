@@ -1,0 +1,32 @@
+{
+  "id": 1,
+  "name": "John",
+  "department": {
+    "name": "Sales",
+    "location": "New York",
+    "employees": [
+      {
+        "id": 101,
+        "name": "Alice",
+        "position": "Manager"
+      },
+      {
+        "id": 102,
+        "name": "Bob",
+        "position": "Associate"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": 201,
+      "name": "Project A",
+      "status": "Completed"
+    },
+    {
+      "id": 202,
+      "name": "Project B",
+      "status": "In Progress"
+    }
+  ]
+}
