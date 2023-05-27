@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h2>Formularz dodawania kontaktu</h2>
+
+<!--  <form method="POST">-->
+<!--      <p>-->
+<!--          Login: <br/>-->
+<!--          <input type="text" name=";ogin">-->
+<!--      </p>-->
+<!--      <p>-->
+<!--          Haslo:<br/>-->
+<!--          <input type="password" name="haslo">-->
+<!--      </p>-->
+<!--      <butt type="submit">Zaloguj</butt>-->
+<!--  </form>-->
+
+    <form method="POST">
+
+        {% csrf_token %}
+        <! -- jako znacznik HTML -->
+        {{ formKontakt.as_p }}
+
+        <button type="submit">Zapisz dane</button>
+    </form>
+
+</body>
+</html>

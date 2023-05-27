@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h2>Formularz edycji</h2>
+
+    <form method="POST">
+
+      {% csrf_token %}
+      {{ formKontakt.as_p }}
+
+      <button type="submit">Zapisz dane</button>
+
+    </form>
+
+</body>
+</html>
