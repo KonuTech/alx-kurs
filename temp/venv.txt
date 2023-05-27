@@ -8,8 +8,6 @@ pip list
 PS C:\Users\kurs\Desktop\projekty_alx\project_blog> django-admin startproject mysite .
 PS C:\Users\kurs\Desktop\projekty_alx\project_blog> python manage.py runserver
 
-python manage.py startapp kt
-python manage.py makemigrations 
-
+python manage.py runserver
 python manage.py startapp kt
 python manage.py makemigrations
