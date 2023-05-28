@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# TODO: baza sie zamyka po pierwszej funkcji
+
 
 from dotenv import dotenv_values
 import pymysql
@@ -23,6 +25,12 @@ def dodaj(imie, nazwisko, pensja, table=table, conn=conn):
         with conn.cursor() as cur:
             cur.execute(f"INSERT INTO {table} (imie, nazwisko, pensja) VALUES ('{imie}', '{nazwisko}', {pensja})")
 
+        decyzja = input(f"Czy zatwierdzasz operacje T/N").upper()
+        if decyzja == "T":
+            conn.commit()
+        else:
+            conn.rollback()
+
 
 def pokaz(table=table, conn=conn):
     with conn:
@@ -38,11 +46,23 @@ def usun(id, table=table, conn=conn):
         with conn.cursor() as cur:
             cur.execute(f"DELETE FROM {table} WHERE ID={id}")
 
+        decyzja = input(f"Czy zatwierdzasz operacje T/N").upper()
+        if decyzja == "T":
+            conn.commit()
+        else:
+            conn.rollback()
+
 
 def edytuj(id, imie, nazwisko, pensja, table=table, conn=conn):
     with conn:
         with conn.cursor() as cur:
             cur.execute(f"UPDATE {table} SET imie='{imie}', nazwisko='{nazwisko}', pensja={pensja} WHERE ID={id}")
+
+        decyzja = input(f"Czy zatwierdzasz operacje T/N").upper()
+        if decyzja == "T":
+            conn.commit()
+        else:
+            conn.rollback()
 
 
 def wyszukaj(imie, nazwisko, table=table, conn=conn):
